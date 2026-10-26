@@ -1,0 +1,4513 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="CampusFind — Campus-exclusive peer-to-peer equipment rental marketplace for students at RGUKT Nuzvid, Eluru District, AP. Rent calculators, laptops, DSLR cameras, Arduino kits, and project tools." />
+  <meta name="theme-color" content="#0f2e22" />
+  <title>CampusFind — Need it? Rent it on campus | RGUKT Nuzvid</title>
+
+  <!-- Google Fonts: Space Grotesk (Headings) & DM Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       1. CSS VARIABLES & DESIGN TOKENS
+       ========================================================================== */
+    :root {
+      /* Primary Brand Palette */
+      --c-forest: #0f2e22;
+      --c-forest-rgb: 15, 46, 34;
+      --c-forest-dark: #081a13;
+      --c-forest-soft: #1b4937;
+      --c-forest-subtle: #245e47;
+
+      --c-ivory: #f6f2e8;
+      --c-ivory-rgb: 246, 242, 232;
+      --c-ivory-warm: #fcfaf4;
+      --c-ivory-card: #ffffff;
+      --c-ivory-dark: #ebe4d5;
+
+      --c-lime: #c6f432;
+      --c-lime-rgb: 198, 244, 50;
+      --c-lime-hover: #b4e022;
+      --c-lime-dark: #8cb50d;
+
+      --c-charcoal: #1c2420;
+      --c-charcoal-muted: #526057;
+      --c-charcoal-light: #7a8a81;
+
+      --c-sage: #d9e2db;
+      --c-sage-light: #eef3ef;
+      --c-sage-dark: #bac7bd;
+
+      --c-white: #ffffff;
+      --c-black: #0c120f;
+      --c-border: #e3dcce;
+      --c-border-hover: #1b4937;
+
+      /* Status colors */
+      --c-success: #15803d;
+      --c-success-bg: #eaf7ed;
+      --c-warning: #b45309;
+      --c-warning-bg: #fef3c7;
+      --c-danger: #b91c1c;
+      --c-danger-bg: #fee2e2;
+      --c-info: #0369a1;
+      --c-info-bg: #e0f2fe;
+
+      /* Typography */
+      --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      /* Glassmorphism System */
+      --glass-bg: rgba(255, 255, 255, 0.72);
+      --glass-bg-hover: rgba(255, 255, 255, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.85);
+      --glass-border-subtle: rgba(15, 46, 34, 0.08);
+      --glass-blur: blur(18px);
+      --glass-shadow: 0 20px 40px -15px rgba(15, 46, 34, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.7);
+
+      /* Shadows */
+      --shadow-sm: 0 2px 6px -1px rgba(15, 46, 34, 0.05);
+      --shadow-md: 0 10px 24px -6px rgba(15, 46, 34, 0.08);
+      --shadow-lg: 0 20px 44px -10px rgba(15, 46, 34, 0.14);
+      --shadow-modal: 0 35px 80px -15px rgba(8, 26, 19, 0.4);
+
+      /* Radii */
+      --r-xs: 4px;
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 22px;
+      --r-xl: 32px;
+      --r-full: 9999px;
+
+      /* Transitions */
+      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.25, 0.1, 0.25, 1);
+      --trans-fast: 160ms var(--ease-smooth);
+      --trans-normal: 280ms var(--ease-spring);
+      --trans-slow: 450ms var(--ease-spring);
+
+      /* Layout */
+      --container-max: 1260px;
+      --nav-height: 74px;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    /* Dark Mode Theme Tokens */
+    [data-theme="dark"] {
+      --c-forest: #143e2e;
+      --c-forest-dark: #071710;
+      --c-forest-soft: #235d45;
+      --c-forest-subtle: #2f795a;
+
+      --c-ivory: #0b1c15;
+      --c-ivory-warm: #0f241c;
+      --c-ivory-card: #132a21;
+      --c-ivory-dark: #081711;
+
+      --c-lime: #c6f432;
+      --c-lime-hover: #d2fb49;
+
+      --c-charcoal: #eaf1ec;
+      --c-charcoal-muted: #9eb1a6;
+      --c-charcoal-light: #72877b;
+
+      --c-sage: #1e3f31;
+      --c-sage-light: #163226;
+      --c-border: #1e3d30;
+      --c-border-hover: #c6f432;
+
+      --glass-bg: rgba(19, 42, 33, 0.78);
+      --glass-bg-hover: rgba(19, 42, 33, 0.92);
+      --glass-border: rgba(198, 244, 50, 0.15);
+      --glass-border-subtle: rgba(255, 255, 255, 0.08);
+      --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+
+      --shadow-sm: 0 2px 8px -1px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 12px 28px -6px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 22px 50px -10px rgba(0, 0, 0, 0.55);
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE ACCESSIBILITY
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--c-charcoal);
+      background-color: var(--c-ivory);
+      line-height: 1.6;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: background-color var(--trans-normal), color var(--trans-normal);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--c-forest);
+      outline-offset: 3px;
+    }
+
+    [data-theme="dark"] :focus-visible {
+      outline-color: var(--c-lime);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+      color: inherit;
+      border: none;
+      background: none;
+    }
+
+    button {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    img, svg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    /* Accessibility Skip Link */
+    .skip-to-content {
+      position: absolute;
+      top: -100px;
+      left: 1rem;
+      background: var(--c-lime);
+      color: var(--c-forest-dark);
+      font-weight: 700;
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--r-full);
+      z-index: 9999;
+      transition: top var(--trans-fast);
+    }
+
+    .skip-to-content:focus {
+      top: 1rem;
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* ==========================================================================
+       3. TYPOGRAPHY SCALES
+       ========================================================================== */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--c-forest);
+    }
+
+    [data-theme="dark"] h1,
+    [data-theme="dark"] h2,
+    [data-theme="dark"] h3,
+    [data-theme="dark"] h4 {
+      color: var(--c-charcoal);
+    }
+
+    .display-hero {
+      font-size: clamp(2.4rem, 5.5vw + 0.5rem, 4.6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .display-serif-accent {
+      font-style: italic;
+      color: var(--c-forest-soft);
+      font-weight: 600;
+      position: relative;
+    }
+
+    [data-theme="dark"] .display-serif-accent {
+      color: var(--c-lime);
+    }
+
+    .heading-section {
+      font-size: clamp(1.85rem, 3.2vw + 0.3rem, 3rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+    }
+
+    .heading-card {
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .text-lead {
+      font-size: clamp(1.05rem, 1.2vw + 0.3rem, 1.25rem);
+      color: var(--c-charcoal-muted);
+      line-height: 1.6;
+    }
+
+    .text-sm {
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .text-xs {
+      font-size: 0.75rem;
+      line-height: 1.4;
+      letter-spacing: 0.02em;
+    }
+
+    /* Badges & Tags */
+    .badge-editorial {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.3rem 0.75rem;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: var(--r-full);
+      background-color: var(--c-lime);
+      color: var(--c-forest-dark);
+      white-space: nowrap;
+    }
+
+    .badge-editorial::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: var(--c-forest-dark);
+    }
+
+    .badge-demo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(198, 244, 50, 0.18);
+      border: 1px solid rgba(198, 244, 50, 0.4);
+      color: var(--c-forest);
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: var(--r-xs);
+    }
+
+    [data-theme="dark"] .badge-demo {
+      color: var(--c-lime);
+    }
+
+    .kicker {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--c-forest-soft);
+      margin-bottom: 0.5rem;
+    }
+
+    [data-theme="dark"] .kicker {
+      color: var(--c-lime);
+    }
+
+    /* ==========================================================================
+       4. LAYOUT & CONTAINERS
+       ========================================================================== */
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: clamp(1rem, 3.5vw, 2.5rem);
+      padding-right: clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    .section-padding {
+      padding-top: clamp(4rem, 7vw, 6.5rem);
+      padding-bottom: clamp(4rem, 7vw, 6.5rem);
+    }
+
+    .section-header {
+      margin-bottom: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    /* ==========================================================================
+       5. BUTTONS & INTERACTIVE CONTROLS
+       ========================================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-display);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      line-height: 1;
+      padding: 0.85rem 1.6rem;
+      border-radius: var(--r-full);
+      transition: transform var(--trans-normal), background-color var(--trans-normal), color var(--trans-normal), box-shadow var(--trans-normal), border-color var(--trans-normal);
+      text-decoration: none;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary {
+      background-color: var(--c-forest);
+      color: var(--c-ivory);
+      box-shadow: 0 4px 14px rgba(15, 46, 34, 0.25);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--c-forest-soft);
+      box-shadow: 0 6px 20px rgba(15, 46, 34, 0.35);
+    }
+
+    [data-theme="dark"] .btn-primary {
+      background-color: var(--c-lime);
+      color: var(--c-forest-dark);
+      box-shadow: 0 4px 14px rgba(198, 244, 50, 0.25);
+    }
+
+    [data-theme="dark"] .btn-primary:hover {
+      background-color: var(--c-lime-hover);
+    }
+
+    .btn-lime {
+      background-color: var(--c-lime);
+      color: var(--c-forest-dark);
+      box-shadow: 0 4px 14px rgba(198, 244, 50, 0.3);
+    }
+
+    .btn-lime:hover {
+      background-color: var(--c-lime-hover);
+      box-shadow: 0 6px 20px rgba(198, 244, 50, 0.45);
+    }
+
+    .btn-secondary {
+      background-color: var(--c-ivory-card);
+      color: var(--c-forest);
+      border: 1px solid var(--c-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    [data-theme="dark"] .btn-secondary {
+      color: var(--c-charcoal);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--c-ivory-warm);
+      border-color: var(--c-forest-soft);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--c-charcoal);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 46, 34, 0.06);
+    }
+
+    [data-theme="dark"] .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-icon-round {
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      color: var(--c-charcoal);
+      transition: all var(--trans-fast);
+    }
+
+    .btn-icon-round:hover {
+      background: var(--c-lime);
+      color: var(--c-forest-dark);
+      border-color: var(--c-lime);
+      transform: translateY(-2px);
+    }
+
+    /* ==========================================================================
+       6. NAVIGATION & HEADER
+       ========================================================================== */
+    .top-banner {
+      background-color: var(--c-forest-dark);
+      color: var(--c-sage);
+      font-size: 0.78rem;
+      padding: 0.45rem 1rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      z-index: 1010;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      background: rgba(246, 242, 232, 0.85);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-bottom: 1px solid var(--glass-border-subtle);
+      transition: background-color var(--trans-normal), box-shadow var(--trans-normal);
+    }
+
+    [data-theme="dark"] .site-header {
+      background: rgba(11, 28, 21, 0.88);
+      border-bottom-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .site-header.is-scrolled {
+      box-shadow: 0 4px 20px -2px rgba(15, 46, 34, 0.06);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--c-forest);
+    }
+
+    [data-theme="dark"] .brand-wordmark {
+      color: var(--c-charcoal);
+    }
+
+    .brand-cube-icon {
+      width: 32px;
+      height: 32px;
+      background-color: var(--c-forest);
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--c-lime);
+      box-shadow: 0 3px 10px rgba(15, 46, 34, 0.2);
+    }
+
+    [data-theme="dark"] .brand-cube-icon {
+      background-color: var(--c-lime);
+      color: var(--c-forest-dark);
+    }
+
+    .campus-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.22rem 0.65rem;
+      border-radius: var(--r-full);
+      background: rgba(15, 46, 34, 0.08);
+      border: 1px solid rgba(15, 46, 34, 0.15);
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--c-forest);
+    }
+
+    [data-theme="dark"] .campus-chip {
+      background: rgba(198, 244, 50, 0.12);
+      border-color: rgba(198, 244, 50, 0.25);
+      color: var(--c-lime);
+    }
+
+    .campus-chip::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: currentColor;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(1rem, 2vw, 2.2rem);
+    }
+
+    .nav-link {
+      font-family: var(--font-display);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--c-charcoal);
+      position: relative;
+      padding: 0.4rem 0;
+      transition: color var(--trans-fast);
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--c-forest);
+      transition: width var(--trans-normal);
+      border-radius: var(--r-full);
+    }
+
+    [data-theme="dark"] .nav-link::after {
+      background-color: var(--c-lime);
+    }
+
+    .nav-link:hover {
+      color: var(--c-forest);
+    }
+
+    [data-theme="dark"] .nav-link:hover {
+      color: var(--c-lime);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.is-active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    /* Wishlist Counter Badge */
+    .btn-wishlist-nav {
+      position: relative;
+    }
+
+    .nav-counter-badge {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      background-color: var(--c-forest);
+      color: var(--c-lime);
+      font-size: 0.6875rem;
+      font-weight: 800;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    [data-theme="dark"] .nav-counter-badge {
+      background-color: var(--c-lime);
+      color: var(--c-forest-dark);
+    }
+
+    .mobile-menu-trigger {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: var(--r-sm);
+      background: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      color: var(--c-charcoal);
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ==========================================================================
+       7. HERO SECTION (Asymmetric Composition, Frosted Glass, Ambient Glow)
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      padding-top: clamp(2rem, 5vw, 4rem);
+      padding-bottom: clamp(3.5rem, 6vw, 6rem);
+      overflow: hidden;
+      min-height: calc(88dvh - var(--nav-height));
+      display: flex;
+      align-items: center;
+      background: radial-gradient(circle at 10% 20%, rgba(198, 244, 50, 0.12) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 80%, rgba(217, 226, 219, 0.45) 0%, transparent 50%),
+                  var(--c-ivory);
+    }
+
+    [data-theme="dark"] .hero-section {
+      background: radial-gradient(circle at 15% 25%, rgba(198, 244, 50, 0.08) 0%, transparent 45%),
+                  radial-gradient(circle at 85% 75%, rgba(35, 93, 69, 0.25) 0%, transparent 50%),
+                  var(--c-ivory);
+    }
+
+    /* Cursor Ambient Glow (Disabled on touch) */
+    .hero-glow-follow {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(198, 244, 50, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      transition: opacity 300ms ease;
+      opacity: 0;
+      z-index: 1;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .hero-section:hover .hero-glow-follow {
+        opacity: 1;
+      }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.95fr;
+      gap: clamp(2rem, 4vw, 4.5rem);
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Frosted Glass Search Panel */
+    .hero-glass-search {
+      background: var(--glass-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow);
+      border-radius: var(--r-lg);
+      padding: clamp(1.2rem, 2vw, 1.6rem);
+      position: relative;
+      margin-top: 2rem;
+      transition: box-shadow var(--trans-normal), border-color var(--trans-normal);
+    }
+
+    .hero-glass-search:hover {
+      border-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 25px 50px -10px rgba(15, 46, 34, 0.18);
+    }
+
+    [data-theme="dark"] .hero-glass-search:hover {
+      border-color: rgba(198, 244, 50, 0.35);
+    }
+
+    .hero-search-form {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr auto;
+      gap: 0.75rem;
+      align-items: end;
+    }
+
+    .field-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .field-label {
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--c-charcoal-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .field-input,
+    .field-select {
+      width: 100%;
+      padding: 0.75rem 0.95rem;
+      background-color: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      font-size: 0.9rem;
+      color: var(--c-charcoal);
+      font-weight: 500;
+      transition: border-color var(--trans-fast), box-shadow var(--trans-fast);
+      appearance: none;
+    }
+
+    .field-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230f2e22' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.8rem center;
+      padding-right: 2.2rem;
+    }
+
+    [data-theme="dark"] .field-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23c6f432' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    }
+
+    .field-input:focus,
+    .field-select:focus {
+      border-color: var(--c-forest);
+      box-shadow: 0 0 0 3px rgba(15, 46, 34, 0.12);
+    }
+
+    [data-theme="dark"] .field-input:focus,
+    [data-theme="dark"] .field-select:focus {
+      border-color: var(--c-lime);
+      box-shadow: 0 0 0 3px rgba(198, 244, 50, 0.2);
+    }
+
+    /* Hero Quick Pills */
+    .hero-quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid rgba(15, 46, 34, 0.08);
+    }
+
+    [data-theme="dark"] .hero-quick-tags {
+      border-top-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .quick-tag-btn {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      background: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-full);
+      color: var(--c-charcoal);
+      transition: all var(--trans-fast);
+    }
+
+    .quick-tag-btn:hover {
+      background: var(--c-forest);
+      color: var(--c-lime);
+      border-color: var(--c-forest);
+    }
+
+    [data-theme="dark"] .quick-tag-btn:hover {
+      background: var(--c-lime);
+      color: var(--c-forest-dark);
+      border-color: var(--c-lime);
+    }
+
+    /* Asymmetric Hero Product Shoot (Right Side) */
+    .hero-shoot-composition {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .shoot-card {
+      position: absolute;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      border: 3px solid var(--c-ivory-card);
+      background-color: var(--c-ivory-warm);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      transition: transform var(--trans-normal), box-shadow var(--trans-normal);
+      cursor: pointer;
+    }
+
+    .shoot-card:hover {
+      transform: scale(1.05) translateY(-5px) !important;
+      z-index: 10 !important;
+      box-shadow: var(--shadow-modal);
+    }
+
+    .shoot-card-calc {
+      top: 4%;
+      left: 2%;
+      width: 48%;
+      height: 48%;
+      z-index: 3;
+      background: linear-gradient(135deg, #f0f7f3 0%, #e1ece5 100%);
+    }
+
+    .shoot-card-camera {
+      top: 0%;
+      right: 0%;
+      width: 50%;
+      height: 52%;
+      z-index: 2;
+      background: linear-gradient(135deg, #f7f3ed 0%, #ede6da 100%);
+    }
+
+    .shoot-card-laptop {
+      bottom: 4%;
+      right: 4%;
+      width: 52%;
+      height: 48%;
+      z-index: 4;
+      background: linear-gradient(135deg, #edf4f7 0%, #d8e5ec 100%);
+    }
+
+    .shoot-card-arduino {
+      bottom: 0%;
+      left: 4%;
+      width: 46%;
+      height: 46%;
+      z-index: 1;
+      background: linear-gradient(135deg, #fbf7ee 0%, #efe7d6 100%);
+    }
+
+    [data-theme="dark"] .shoot-card-calc { background: linear-gradient(135deg, #132a21 0%, #1c3d30 100%); }
+    [data-theme="dark"] .shoot-card-camera { background: linear-gradient(135deg, #202a1c 0%, #2f3e2a 100%); }
+    [data-theme="dark"] .shoot-card-laptop { background: linear-gradient(135deg, #18262a 0%, #22373c 100%); }
+    [data-theme="dark"] .shoot-card-arduino { background: linear-gradient(135deg, #2b2816 0%, #3e3a20 100%); }
+
+    /* Rotated Oversized Campus Sticker */
+    .hero-sticker-badge {
+      position: absolute;
+      top: 44%;
+      left: -6%;
+      background: var(--c-lime);
+      color: var(--c-forest-dark);
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.45rem 1rem;
+      border-radius: var(--r-full);
+      box-shadow: 0 10px 24px -4px rgba(15, 46, 34, 0.25);
+      transform: rotate(-10deg);
+      z-index: 12;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      animation: stickerBob 6s ease-in-out infinite;
+    }
+
+    @keyframes stickerBob {
+      0%, 100% { transform: rotate(-10deg) translateY(0); }
+      50% { transform: rotate(-8deg) translateY(-6px); }
+    }
+
+    .hero-sticker-badge-2 {
+      position: absolute;
+      bottom: -4%;
+      right: 25%;
+      background: var(--c-forest);
+      color: var(--c-lime);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--r-full);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: var(--shadow-md);
+      z-index: 12;
+      transform: rotate(4deg);
+    }
+
+    /* Hand-Drawn SVG Squiggle */
+    .svg-squiggle {
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      color: var(--c-lime);
+      overflow: visible;
+    }
+
+    /* Marquee Strip */
+    .marquee-strip {
+      background-color: var(--c-forest);
+      color: var(--c-ivory);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 0.85rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      gap: 2rem;
+      animation: marqueeScroll 28s linear infinite;
+    }
+
+    .marquee-item {
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .marquee-item::after {
+      content: "✦";
+      color: var(--c-lime);
+      font-size: 0.75rem;
+    }
+
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ==========================================================================
+       8. PRODUCT CARDS & GALLERY
+       ========================================================================== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .product-card {
+      background-color: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform var(--trans-normal), box-shadow var(--trans-normal), border-color var(--trans-normal);
+      outline: none;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--c-forest-soft);
+    }
+
+    [data-theme="dark"] .product-card:hover {
+      border-color: var(--c-lime);
+    }
+
+    .product-card-media {
+      position: relative;
+      width: 100%;
+      height: 195px;
+      background: var(--c-ivory-warm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      overflow: hidden;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .product-card-media svg {
+      max-height: 100%;
+      max-width: 100%;
+      transition: transform 400ms var(--ease-spring);
+    }
+
+    .product-card:hover .product-card-media svg {
+      transform: scale(1.06);
+    }
+
+    /* Floating Pill on Card */
+    .card-category-pill {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      background: rgba(15, 46, 34, 0.88);
+      backdrop-filter: blur(8px);
+      color: var(--c-lime);
+      font-family: var(--font-display);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--r-full);
+      z-index: 2;
+    }
+
+    .card-condition-pill {
+      position: absolute;
+      bottom: 0.85rem;
+      right: 0.85rem;
+      background: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      color: var(--c-charcoal);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: var(--r-xs);
+      z-index: 2;
+    }
+
+    .card-wishlist-btn {
+      position: absolute;
+      top: 0.85rem;
+      right: 0.85rem;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      color: var(--c-charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      transition: all var(--trans-fast);
+    }
+
+    .card-wishlist-btn:hover {
+      background: #fee2e2;
+      color: #dc2626;
+      border-color: #fca5a5;
+    }
+
+    .card-wishlist-btn.is-active {
+      color: #dc2626;
+    }
+
+    .card-wishlist-btn.is-active svg {
+      fill: #dc2626;
+    }
+
+    .product-card-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-pickup-line {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--c-forest-soft);
+      margin-bottom: 0.4rem;
+    }
+
+    [data-theme="dark"] .product-pickup-line {
+      color: var(--c-lime);
+    }
+
+    .product-card-title {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--c-forest);
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+
+    [data-theme="dark"] .product-card-title {
+      color: var(--c-charcoal);
+    }
+
+    .product-owner-row {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.8125rem;
+      color: var(--c-charcoal-muted);
+    }
+
+    .owner-type-chip {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 0.1rem 0.45rem;
+      border-radius: var(--r-xs);
+      background: var(--c-sage-light);
+      color: var(--c-forest-dark);
+    }
+
+    [data-theme="dark"] .owner-type-chip {
+      background: var(--c-forest);
+      color: var(--c-lime);
+    }
+
+    .product-desc-line {
+      font-size: 0.825rem;
+      color: var(--c-charcoal-muted);
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+
+    .product-card-footer {
+      margin-top: auto;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--c-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .price-group {
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+    }
+
+    .price-bold {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--c-forest);
+    }
+
+    [data-theme="dark"] .price-bold {
+      color: var(--c-lime);
+    }
+
+    .price-unit {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--c-charcoal-muted);
+    }
+
+    /* Category Filter Chips Strip */
+    .category-filter-strip {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.65rem;
+      margin-bottom: 1.5rem;
+      scrollbar-width: thin;
+    }
+
+    .cat-chip {
+      padding: 0.55rem 1.15rem;
+      border-radius: var(--r-full);
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      color: var(--c-charcoal);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      transition: all var(--trans-fast);
+    }
+
+    .cat-chip:hover {
+      border-color: var(--c-forest-soft);
+      background: var(--c-sage-light);
+    }
+
+    .cat-chip.is-active {
+      background: var(--c-forest);
+      color: var(--c-lime);
+      border-color: var(--c-forest);
+      box-shadow: 0 4px 12px rgba(15, 46, 34, 0.2);
+    }
+
+    [data-theme="dark"] .cat-chip.is-active {
+      background: var(--c-lime);
+      color: var(--c-forest-dark);
+      border-color: var(--c-lime);
+    }
+
+    /* ==========================================================================
+       9. BROWSE VIEW & FILTER DRAWER
+       ========================================================================== */
+    .browse-layout {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .browse-sidebar {
+      background: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      position: sticky;
+      top: calc(var(--nav-height) + 1rem);
+    }
+
+    .sidebar-section-title {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--c-forest);
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    [data-theme="dark"] .sidebar-section-title {
+      color: var(--c-lime);
+    }
+
+    .filter-item-group {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    .filter-item-group:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 0.875rem;
+      color: var(--c-charcoal);
+      margin-bottom: 0.45rem;
+      cursor: pointer;
+    }
+
+    .checkbox-label input[type="checkbox"],
+    .checkbox-label input[type="radio"] {
+      width: 16px;
+      height: 16px;
+      accent-color: var(--c-forest);
+      cursor: pointer;
+    }
+
+    [data-theme="dark"] .checkbox-label input[type="checkbox"],
+    [data-theme="dark"] .checkbox-label input[type="radio"] {
+      accent-color: var(--c-lime);
+    }
+
+    .browse-top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--c-border);
+    }
+
+    /* Skeleton Loading State */
+    .skeleton-card {
+      background: var(--c-ivory-card);
+      border-radius: var(--r-lg);
+      border: 1px solid var(--c-border);
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: pulseSkeleton 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulseSkeleton {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 0.9; }
+    }
+
+    .skeleton-media {
+      height: 180px;
+      background: var(--c-sage-light);
+    }
+
+    .skeleton-line {
+      height: 14px;
+      border-radius: var(--r-xs);
+      background: var(--c-sage);
+      margin: 0.6rem 1rem;
+    }
+
+    /* Empty State */
+    .empty-state-box {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4.5rem 2rem;
+      background: var(--c-ivory-card);
+      border: 1px dashed var(--c-border);
+      border-radius: var(--r-lg);
+    }
+
+    /* ==========================================================================
+       10. PRODUCT DETAIL VIEW & INTERACTIVE BOOKING CALCULATOR
+       ========================================================================== */
+    .detail-view-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(2rem, 4vw, 3.5rem);
+      align-items: start;
+    }
+
+    .detail-gallery-box {
+      background: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-xl);
+      padding: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 420px;
+      position: sticky;
+      top: calc(var(--nav-height) + 1.5rem);
+    }
+
+    .detail-gallery-box svg {
+      max-width: 90%;
+      max-height: 340px;
+    }
+
+    .calculator-panel {
+      background: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-xl);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .price-breakdown-table {
+      background: var(--c-ivory-warm);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      padding: 1.15rem;
+      margin: 1.25rem 0;
+    }
+
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      color: var(--c-charcoal-muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .breakdown-row.total-row {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--c-forest);
+      padding-top: 0.65rem;
+      border-top: 1px dashed var(--c-border);
+      margin-bottom: 0;
+    }
+
+    [data-theme="dark"] .breakdown-row.total-row {
+      color: var(--c-lime);
+    }
+
+    /* ==========================================================================
+       11. MULTI-STEP "LIST AN ITEM" FORM & LIVE PREVIEW
+       ========================================================================== */
+    .list-item-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(2rem, 3.5vw, 3.5rem);
+      align-items: start;
+    }
+
+    .step-indicator-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .step-dot {
+      flex: 1;
+      height: 4px;
+      border-radius: var(--r-full);
+      background: var(--c-border);
+      transition: background-color var(--trans-fast);
+    }
+
+    .step-dot.is-active,
+    .step-dot.is-completed {
+      background: var(--c-forest);
+    }
+
+    [data-theme="dark"] .step-dot.is-active,
+    [data-theme="dark"] .step-dot.is-completed {
+      background: var(--c-lime);
+    }
+
+    .preview-sticky-wrap {
+      position: sticky;
+      top: calc(var(--nav-height) + 1.5rem);
+    }
+
+    /* ==========================================================================
+       12. DASHBOARD VIEW (Renter & Owner Flow)
+       ========================================================================== */
+    .dashboard-tabs-bar {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--c-border);
+      margin-bottom: 2rem;
+    }
+
+    .dash-tab-btn {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.85rem 1.25rem;
+      color: var(--c-charcoal-muted);
+      border-bottom: 3px solid transparent;
+      transition: all var(--trans-fast);
+    }
+
+    .dash-tab-btn:hover {
+      color: var(--c-forest);
+    }
+
+    .dash-tab-btn.is-active {
+      color: var(--c-forest);
+      border-bottom-color: var(--c-forest);
+    }
+
+    [data-theme="dark"] .dash-tab-btn:hover,
+    [data-theme="dark"] .dash-tab-btn.is-active {
+      color: var(--c-lime);
+      border-bottom-color: var(--c-lime);
+    }
+
+    .rental-order-card {
+      background: var(--c-ivory-card);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      transition: border-color var(--trans-fast);
+    }
+
+    .rental-order-card:hover {
+      border-color: var(--c-forest-soft);
+    }
+
+    .order-status-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--r-full);
+      white-space: nowrap;
+    }
+
+    .status-requested { background: var(--c-warning-bg); color: var(--c-warning); }
+    .status-approved { background: var(--c-success-bg); color: var(--c-success); }
+    .status-rejected { background: var(--c-danger-bg); color: var(--c-danger); }
+    .status-picked-up { background: var(--c-info-bg); color: var(--c-info); }
+    .status-returned { background: var(--c-sage-light); color: var(--c-forest); }
+
+    /* ==========================================================================
+       13. MODALS, TOASTS & DRAWERS
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 26, 19, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity var(--trans-normal), visibility var(--trans-normal);
+    }
+
+    .modal-backdrop.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-panel {
+      background-color: var(--c-ivory-card);
+      border-radius: var(--r-xl);
+      max-width: 680px;
+      width: 100%;
+      max-height: 90dvh;
+      overflow-y: auto;
+      box-shadow: var(--shadow-modal);
+      border: 1px solid var(--c-border);
+      position: relative;
+      transform: translateY(20px) scale(0.98);
+      transition: transform var(--trans-normal);
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .modal-backdrop.is-open .modal-panel {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--c-ivory-warm);
+      border: 1px solid var(--c-border);
+      color: var(--c-charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all var(--trans-fast);
+    }
+
+    .modal-close-btn:hover {
+      background: var(--c-forest);
+      color: var(--c-lime);
+    }
+
+    /* Toast Container */
+    .toast-container {
+      position: fixed;
+      bottom: calc(1.5rem + var(--safe-bottom));
+      right: 1.5rem;
+      z-index: 3000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      pointer-events: none;
+      max-width: min(380px, 90vw);
+    }
+
+    .toast {
+      background-color: var(--c-forest-dark);
+      color: var(--c-white);
+      padding: 0.85rem 1.25rem;
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-lg);
+      border-left: 4px solid var(--c-lime);
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      pointer-events: auto;
+      animation: toastIn 300ms var(--ease-spring);
+    }
+
+    @keyframes toastIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Mobile Bottom Sheet Filters */
+    .mobile-filter-drawer {
+      display: none;
+    }
+
+    /* ==========================================================================
+       14. FOOTER & MISC
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--c-forest-dark);
+      color: var(--c-sage);
+      padding-top: clamp(4rem, 6vw, 6rem);
+      padding-bottom: clamp(2rem, 4vw, 3rem);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(3, 1fr) 1.2fr;
+      gap: clamp(2rem, 3.5vw, 3.5rem);
+      margin-bottom: 3.5rem;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--c-lime);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.875rem;
+    }
+
+    .footer-link {
+      color: var(--c-sage);
+      transition: color var(--trans-fast);
+    }
+
+    .footer-link:hover {
+      color: var(--c-white);
+    }
+
+    /* Form Inputs */
+    .form-group {
+      margin-bottom: 1.15rem;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--c-forest);
+      margin-bottom: 0.35rem;
+    }
+
+    [data-theme="dark"] .form-label {
+      color: var(--c-charcoal);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 0.95rem;
+      background: var(--c-ivory-warm);
+      border: 1px solid var(--c-border);
+      border-radius: var(--r-md);
+      font-size: 0.9rem;
+      color: var(--c-charcoal);
+      transition: all var(--trans-fast);
+    }
+
+    .form-control:focus {
+      border-color: var(--c-forest);
+      box-shadow: 0 0 0 3px rgba(15, 46, 34, 0.12);
+    }
+
+    [data-theme="dark"] .form-control:focus {
+      border-color: var(--c-lime);
+      box-shadow: 0 0 0 3px rgba(198, 244, 50, 0.2);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+    }
+
+    /* View visibility controls */
+    .app-view {
+      display: none;
+      animation: fadeInView 280ms ease forwards;
+    }
+
+    .app-view.is-active {
+      display: block;
+    }
+
+    @keyframes fadeInView {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       15. RESPONSIVENESS (320px to 2560px, dvh, safe-areas)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .hero-shoot-composition {
+        max-width: 440px;
+      }
+
+      .hero-search-form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .field-wrap:nth-child(4) {
+        grid-column: span 2;
+      }
+
+      .browse-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .browse-sidebar {
+        display: none;
+      }
+
+      .mobile-filter-drawer-btn {
+        display: inline-flex !important;
+      }
+
+      .detail-view-grid,
+      .list-item-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-gallery-box,
+      .preview-sticky-wrap {
+        position: static;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links,
+      .nav-actions .btn-primary {
+        display: none;
+      }
+
+      .mobile-menu-trigger {
+        display: flex;
+      }
+
+      .hero-search-form {
+        grid-template-columns: 1fr;
+      }
+
+      .field-wrap:nth-child(4) {
+        grid-column: span 1;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip to Main Link -->
+  <a href="#main-content" class="skip-to-content">Skip to content</a>
+
+  <!-- Top RGUKT Community Notice Ticker -->
+  <aside class="top-banner" role="complementary" aria-label="Campus Notice">
+    <div class="container" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+      <span class="badge-demo">Demo Prototype</span>
+      <span>Rajiv Gandhi University of Knowledge Technologies (RGUKT) Nuzvid Campus Marketplace</span>
+      <span style="color: var(--c-lime); font-weight: 700;">• Handover at SAC &amp; Central Library</span>
+    </div>
+  </aside>
+
+  <!-- Sticky Glassmorphic Header -->
+  <header class="site-header" id="navbar">
+    <div class="container nav-container">
+      <!-- Left: Logo & Campus Tag -->
+      <div class="brand-group">
+        <a href="#home" class="brand-wordmark" aria-label="CampusFind Home">
+          <span class="brand-cube-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </span>
+          <span>Campus<span style="color: var(--c-forest-soft);">Find</span><span style="color: var(--c-lime-dark);">.</span></span>
+        </a>
+        <span class="campus-chip" title="Exclusive to RGUKT Nuzvid, Eluru District, AP">RGUKT Nuzvid</span>
+      </div>
+
+      <!-- Center: Main Routes -->
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#home" class="nav-link" data-route="home">Home</a>
+        <a href="#browse" class="nav-link" data-route="browse">Explore Items</a>
+        <a href="#list-item" class="nav-link" data-route="list-item">List an Item</a>
+        <a href="#dashboard" class="nav-link" data-route="dashboard">Dashboard</a>
+      </nav>
+
+      <!-- Right: Action Buttons & Theme Toggle -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="btn-icon-round" id="theme-toggle-btn" aria-label="Toggle dark/forest theme" title="Toggle Dark/Forest Theme">
+          <svg id="theme-sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </button>
+
+        <!-- Wishlist Button -->
+        <button class="btn-icon-round btn-wishlist-nav" id="btn-open-wishlist" aria-label="View Saved Gear" title="Saved Gear">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+          </svg>
+          <span class="nav-counter-badge" id="wishlist-badge">0</span>
+        </button>
+
+        <!-- Primary CTA -->
+        <a href="#browse" class="btn btn-primary" style="padding: 0.65rem 1.35rem; font-size: 0.875rem;">
+          Find Items to Rent
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button class="mobile-menu-trigger" id="mobile-menu-toggle" aria-label="Open mobile menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop & Menu -->
+  <div class="modal-backdrop" id="mobile-nav-backdrop" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div style="position: fixed; top: 0; right: 0; bottom: 0; width: min(320px, 85vw); background: var(--c-ivory-card); padding: 2rem 1.5rem; display: flex; flex-direction: column; z-index: 2100; box-shadow: var(--shadow-modal);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <span class="brand-wordmark" style="font-size: 1.2rem;">CampusFind</span>
+        <button class="modal-close-btn" id="btn-close-mobile-nav" aria-label="Close menu" style="position: static;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <nav style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <a href="#home" class="nav-link mobile-nav-link" style="font-size: 1.15rem;">Home</a>
+        <a href="#browse" class="nav-link mobile-nav-link" style="font-size: 1.15rem;">Explore Items</a>
+        <a href="#list-item" class="nav-link mobile-nav-link" style="font-size: 1.15rem;">List an Item</a>
+        <a href="#dashboard" class="nav-link mobile-nav-link" style="font-size: 1.15rem;">Dashboard</a>
+        <a href="#profile" class="nav-link mobile-nav-link" style="font-size: 1.15rem;">Student Profile</a>
+      </nav>
+      <div style="margin-top: auto; padding-top: 1.5rem; border-top: 1px solid var(--c-border); display: flex; flex-direction: column; gap: 0.75rem;">
+        <a href="#browse" class="btn btn-primary" style="width: 100%;">Find Items</a>
+        <a href="#list-item" class="btn btn-lime" style="width: 100%;">+ List an Item</a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" style="flex: 1;">
+    <!-- ====================================================================
+         VIEW 1: HOME PAGE (`#home`)
+         ==================================================================== -->
+    <div id="view-home" class="app-view is-active">
+      <!-- Hero Section -->
+      <section class="hero-section" id="hero-banner">
+        <div class="hero-glow-follow" id="hero-glow"></div>
+        <div class="container">
+          <div class="hero-grid">
+            <!-- Left: Hero Headline & Glass Search -->
+            <div>
+              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.25rem; flex-wrap: wrap;">
+                <span class="badge-editorial">Made for RGUKT Nuzvid</span>
+                <span class="text-xs" style="font-weight: 700; color: var(--c-charcoal-muted); letter-spacing: 0.05em; text-transform: uppercase;">
+                  Eluru District, Andhra Pradesh
+                </span>
+              </div>
+
+              <h1 class="display-hero">
+                Why buy it<br />
+                <span class="display-serif-accent">
+                  when you can borrow it?
+                  <svg class="svg-squiggle" viewBox="0 0 200 8" fill="none" preserveAspectRatio="none">
+                    <path d="M1 5.5C40 1.5 80 7 120 3.5C150 1 180 6.5 199 4" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                  </svg>
+                </span>
+              </h1>
+
+              <p class="text-lead hero-subhead" style="margin-top: 1.25rem;">
+                From calculators before exams to cameras for college events, discover useful products available to rent from your campus community.
+              </p>
+
+              <!-- Frosted-Glass Search Panel -->
+              <div class="hero-glass-search">
+                <form id="hero-search-form" class="hero-search-form">
+                  <div class="field-wrap">
+                    <label class="field-label" for="hero-query">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                      Search item
+                    </label>
+                    <input type="text" id="hero-query" class="field-input" placeholder="e.g. Casio fx-991EX, Arduino, DSLR..." autocomplete="off" />
+                  </div>
+
+                  <div class="field-wrap">
+                    <label class="field-label" for="hero-category">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                      Category
+                    </label>
+                    <select id="hero-category" class="field-select">
+                      <option value="All">All Categories</option>
+                      <option value="Academic Equipment">Academic Equipment</option>
+                      <option value="Electronics">Electronics</option>
+                      <option value="Photography & Content">Photography &amp; Content</option>
+                      <option value="Electronics Projects">Electronics Projects</option>
+                      <option value="Accessories">Accessories</option>
+                      <option value="Events & Presentations">Events &amp; Presentations</option>
+                    </select>
+                  </div>
+
+                  <div class="field-wrap">
+                    <label class="field-label" for="hero-budget">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                      Daily Budget
+                    </label>
+                    <select id="hero-budget" class="field-select">
+                      <option value="All">Any Budget</option>
+                      <option value="50">Under ₹50/day</option>
+                      <option value="100">Under ₹100/day</option>
+                      <option value="300">Under ₹300/day</option>
+                    </select>
+                  </div>
+
+                  <div class="field-wrap">
+                    <button type="submit" class="btn btn-lime" style="height: 46px; width: 100%;">
+                      <span>Search</span>
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </button>
+                  </div>
+                </form>
+
+                <div class="hero-quick-tags">
+                  <span style="font-size: 0.75rem; font-weight: 700; color: var(--c-charcoal-muted);">Campus staples:</span>
+                  <button type="button" class="quick-tag-btn" data-search-tag="Calculator">Casio Calculators (₹30/d)</button>
+                  <button type="button" class="quick-tag-btn" data-search-tag="Arduino">Arduino Kits</button>
+                  <button type="button" class="quick-tag-btn" data-search-tag="Camera">DSLR Cameras</button>
+                  <button type="button" class="quick-tag-btn" data-search-tag="Laptop">Coding Laptops</button>
+                  <button type="button" class="quick-tag-btn" data-search-tag="Drafter">Mini Drafter</button>
+                </div>
+              </div>
+
+              <!-- Primary CTAs -->
+              <div style="margin-top: 1.75rem; display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="#browse" class="btn btn-primary">Find Items to Rent</a>
+                <a href="#list-item" class="btn btn-secondary">+ List an Item</a>
+              </div>
+            </div>
+
+            <!-- Right: Art-Directed Editorial Product Shoot -->
+            <div>
+              <div class="hero-shoot-composition" aria-label="Editorial campus equipment portraits">
+                <!-- Rotated Stickers -->
+                <div class="hero-sticker-badge">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>RGUKT Verified Peers</span>
+                </div>
+                <div class="hero-sticker-badge-2">
+                  <span>₹0 Brokerage • Direct Handover</span>
+                </div>
+
+                <!-- 1: Calculator Portrait -->
+                <div class="shoot-card shoot-card-calc" onclick="window.location.hash='#product/prod-01'" title="Casio fx-991EX ClassWiz">
+                  <div style="width: 100%; height: 75%; display: flex; align-items: center; justify-content: center;" id="art-hero-calc"></div>
+                  <span style="font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; color: var(--c-forest); margin-top: 4px;">Casio Calculator • ₹30/d</span>
+                </div>
+
+                <!-- 2: DSLR Camera Portrait -->
+                <div class="shoot-card shoot-card-camera" onclick="window.location.hash='#product/prod-03'" title="Canon EOS 200D DSLR">
+                  <div style="width: 100%; height: 75%; display: flex; align-items: center; justify-content: center;" id="art-hero-cam"></div>
+                  <span style="font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; color: var(--c-forest); margin-top: 4px;">Canon 200D DSLR • ₹400/d</span>
+                </div>
+
+                <!-- 3: Laptop Portrait -->
+                <div class="shoot-card shoot-card-laptop" onclick="window.location.hash='#product/prod-02'" title="Lenovo ThinkPad Core i5">
+                  <div style="width: 100%; height: 75%; display: flex; align-items: center; justify-content: center;" id="art-hero-laptop"></div>
+                  <span style="font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; color: var(--c-forest); margin-top: 4px;">ThinkPad Laptop • ₹250/d</span>
+                </div>
+
+                <!-- 4: Arduino Kit Portrait -->
+                <div class="shoot-card shoot-card-arduino" onclick="window.location.hash='#product/prod-04'" title="Arduino Uno & Sensors">
+                  <div style="width: 100%; height: 75%; display: flex; align-items: center; justify-content: center;" id="art-hero-arduino"></div>
+                  <span style="font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; color: var(--c-forest); margin-top: 4px;">Arduino Project Kit • ₹80/d</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Marquee Strip of Gear Types -->
+      <div class="marquee-strip" aria-hidden="true">
+        <div class="marquee-track">
+          <span class="marquee-item">Scientific Calculators</span>
+          <span class="marquee-item">Arduino Uno &amp; Nano</span>
+          <span class="marquee-item">ESP32 IoT Kits</span>
+          <span class="marquee-item">DSLR Cameras &amp; 50mm Lenses</span>
+          <span class="marquee-item">Engineering Mini Drafters</span>
+          <span class="marquee-item">Fast-Charge Power Banks</span>
+          <span class="marquee-item">1080p Seminar Projectors</span>
+          <span class="marquee-item">Wireless Lavalier Mics</span>
+          <span class="marquee-item">Heavy Duty Tripods</span>
+          <span class="marquee-item">Scientific Calculators</span>
+          <span class="marquee-item">Arduino Uno &amp; Nano</span>
+          <span class="marquee-item">ESP32 IoT Kits</span>
+          <span class="marquee-item">DSLR Cameras &amp; 50mm Lenses</span>
+          <span class="marquee-item">Engineering Mini Drafters</span>
+        </div>
+      </div>
+
+      <!-- Featured Items Section -->
+      <section class="section-padding">
+        <div class="container">
+          <div class="section-header" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span class="kicker">Popular on Campus</span>
+              <h2 class="heading-section">Most requested this semester</h2>
+              <p class="text-lead" style="margin-top: 0.4rem;">
+                Available for pickup at SAC, Central Library, or your hostel walkway.
+              </p>
+            </div>
+            <a href="#browse" class="btn btn-secondary">View All Items &rarr;</a>
+          </div>
+
+          <div class="products-grid" id="home-featured-grid">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works Section (Two Distinct Paths: Renter vs Owner) -->
+      <section class="section-padding" style="background: var(--c-ivory-warm); border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border);">
+        <div class="container">
+          <div class="section-header" style="text-align: center; max-width: 680px; margin-left: auto; margin-right: auto;">
+            <span class="kicker">Simple 3-Step Process</span>
+            <h2 class="heading-section">How CampusFind Works</h2>
+            <p class="text-lead" style="margin-top: 0.5rem;">
+              Built around campus life at RGUKT Nuzvid. No couriers, no shipping fees — just peer-to-peer handovers.
+            </p>
+          </div>
+
+          <!-- Dual Path Layout -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
+            <!-- Path A: For Renters -->
+            <div style="background: var(--c-ivory-card); border: 1px solid var(--c-border); border-radius: var(--r-xl); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: var(--shadow-sm);">
+              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.5rem;">
+                <span class="badge-editorial">For Students Renting</span>
+                <span style="font-size: 0.8rem; color: var(--c-charcoal-muted); font-weight: 600;">Save up to 90%</span>
+              </div>
+              <h3 style="font-size: 1.35rem; margin-bottom: 1.5rem; color: var(--c-forest);">Need equipment for a few days?</h3>
+              
+              <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div style="display: flex; gap: 1rem;">
+                  <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--c-lime-dark); line-height: 1;">01</span>
+                  <div>
+                    <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Find your gear</h4>
+                    <p class="text-sm" style="color: var(--c-charcoal-muted);">Search calculators, sensors, or cameras available near your hostel block or academic labs.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                  <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--c-lime-dark); line-height: 1;">02</span>
+                  <div>
+                    <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Send a booking request</h4>
+                    <p class="text-sm" style="color: var(--c-charcoal-muted);">Pick your start and return dates. The live calculator shows exact days, deposit, and daily rent.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                  <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--c-lime-dark); line-height: 1;">03</span>
+                  <div>
+                    <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Meet &amp; Handover</h4>
+                    <p class="text-sm" style="color: var(--c-charcoal-muted);">Meet outside SAC or Central Library. Inspect the gear together, return it safely when done.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Path B: For Gear Owners -->
+            <div style="background: var(--c-ivory-card); border: 1px solid var(--c-border); border-radius: var(--r-xl); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: var(--shadow-sm);">
+              <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 1.5rem;">
+                <span class="badge-editorial" style="background: var(--c-forest); color: var(--c-lime);">For Equipment Owners</span>
+                <span style="font-size: 0.8rem; color: var(--c-charcoal-muted); font-weight: 600;">Earn Pocket Money</span>
+              </div>
+              <h3 style="font-size: 1.35rem; margin-bottom: 1.5rem; color: var(--c-forest);">Got tools sitting idle on your desk?</h3>
+              
+              <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div style="display: flex; gap: 1rem;">
+                  <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--c-forest-soft); line-height: 1;">01</span>
+                  <div>
+                    <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">List in 2 minutes</h4>
+                    <p class="text-sm" style="color: var(--c-charcoal-muted);">Set your daily rate, refundable security deposit, and convenient campus pickup location.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                  <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--c-forest-soft); line-height: 1;">02</span>
+                  <div>
+                    <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Approve requests in Dashboard</h4>
+                    <p class="text-sm" style="color: var(--c-charcoal-muted);">Review peer student details, department, and rental duration before approving.</p>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 1rem;">
+                  <span style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--c-forest-soft); line-height: 1;">03</span>
+                  <div>
+                    <h4 style="font-size: 1rem; margin-bottom: 0.25rem;">Handover &amp; Earn</h4>
+                    <p class="text-sm" style="color: var(--c-charcoal-muted);">Hand over the gear, collect the rent, and inspect the item upon safe return.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Earn From What You Own Section -->
+      <section class="section-padding">
+        <div class="container">
+          <div style="background: var(--c-forest); color: var(--c-ivory); border-radius: var(--r-xl); padding: clamp(2rem, 5vw, 4rem); position: relative; overflow: hidden;">
+            <div style="max-width: 640px; position: relative; z-index: 2;">
+              <span class="badge-editorial badge-editorial-dark" style="margin-bottom: 1rem; background: rgba(198, 244, 50, 0.15); color: var(--c-lime); border: 1px solid rgba(198, 244, 50, 0.3);">
+                Campus Side Hustle
+              </span>
+              <h2 style="color: var(--c-white); font-size: clamp(2rem, 3.5vw, 2.8rem); margin-bottom: 1rem;">
+                Your unused gear could fund your next semester.
+              </h2>
+              <p style="color: var(--c-sage); font-size: 1.05rem; line-height: 1.6; margin-bottom: 2rem;">
+                A scientific calculator rented for ₹30/day during 15 exam days makes ₹450. A DSLR camera rented for 4 college fests earns ₹1,600. Keep ownership, share with friends, and earn safely.
+              </p>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="#list-item" class="btn btn-lime">List Your First Gear</a>
+                <a href="#browse" class="btn btn-ghost" style="color: var(--c-white); border: 1px solid rgba(255,255,255,0.2);">Browse Listed Gear</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- For Rental Shops Section -->
+      <section class="section-padding" style="background: var(--c-ivory-warm); border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border);">
+        <div class="container">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; align-items: center;">
+            <div>
+              <span class="kicker">Local Business Eligibility</span>
+              <h2 class="heading-section">For Nuzvid Rental Shops &amp; Businesses</h2>
+              <p class="text-lead" style="margin: 1rem 0;">
+                Eligible rental stores near the RGUKT Nuzvid campus can list high-demand items (large projectors, sound systems, DSLR gear, surveying tools).
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.95rem;">
+                <div style="display: flex; gap: 0.65rem; align-items: flex-start;">
+                  <span style="color: var(--c-lime-dark); font-weight: 800;">✓</span>
+                  <span><strong>Campus Gate Delivery:</strong> Pickups arranged at RGUKT Main Security Gate.</span>
+                </div>
+                <div style="display: flex; gap: 0.65rem; align-items: flex-start;">
+                  <span style="color: var(--c-lime-dark); font-weight: 800;">✓</span>
+                  <span><strong>Student Verification:</strong> All requests include student branch and verified roll numbers.</span>
+                </div>
+                <div style="display: flex; gap: 0.65rem; align-items: flex-start;">
+                  <span style="color: var(--c-lime-dark); font-weight: 800;">✓</span>
+                  <span><strong>Zero Listing Fees:</strong> Free inventory listings during our campus pilot launch.</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: var(--c-ivory-card); border: 1px solid var(--c-border); border-radius: var(--r-xl); padding: 2rem;">
+              <h3 style="font-size: 1.25rem; margin-bottom: 0.5rem;">Partner with CampusFind</h3>
+              <p class="text-sm" style="color: var(--c-charcoal-muted); margin-bottom: 1.5rem;">
+                Local electronics or camera businesses in Nuzvid town: register your shop catalog for campus visibility.
+              </p>
+              <form id="shop-partner-form" onsubmit="event.preventDefault(); showToast('Thank you! Our campus coordinator will reach out to verify your shop.'); this.reset();">
+                <div class="form-group">
+                  <label class="form-label" for="shop-name">Shop / Business Name</label>
+                  <input type="text" id="shop-name" required class="form-control" placeholder="e.g. Nuzvid TechRentals" />
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="shop-contact">Phone / WhatsApp</label>
+                    <input type="tel" id="shop-contact" required class="form-control" placeholder="10-digit number" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="shop-gear-type">Primary Equipment</label>
+                    <select id="shop-gear-type" class="form-control">
+                      <option>Projectors &amp; Audio</option>
+                      <option>DSLR Cameras &amp; Lenses</option>
+                      <option>Laptops &amp; Desktops</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; height: 44px; margin-top: 0.5rem;">
+                  Register as Local Rental Partner
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust & Safety Section (Honestly Labelled Planned Features) -->
+      <section class="section-padding">
+        <div class="container">
+          <div class="section-header" style="max-width: 680px;">
+            <span class="kicker">Transparency First</span>
+            <h2 class="heading-section">Trust &amp; Safety Guidelines</h2>
+            <p class="text-lead" style="margin-top: 0.5rem;">
+              We believe in honest, practical security. Here is what is active today versus what is being built for full campus launch:
+            </p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+            <!-- Active 1 -->
+            <div style="background: var(--c-ivory-card); border: 1px solid var(--c-border); border-radius: var(--r-lg); padding: 1.75rem;">
+              <span class="badge-demo" style="background: var(--c-success-bg); color: var(--c-success); border-color: rgba(21,128,61,0.3); margin-bottom: 0.85rem;">
+                Active in Demo
+              </span>
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Student ID &amp; Roll Numbers</h3>
+              <p class="text-sm" style="color: var(--c-charcoal-muted);">
+                All booking requests require student full name and RGUKT roll number (e.g. N20XXXX). Verify identity before handing over equipment.
+              </p>
+            </div>
+
+            <!-- Active 2 -->
+            <div style="background: var(--c-ivory-card); border: 1px solid var(--c-border); border-radius: var(--r-lg); padding: 1.75rem;">
+              <span class="badge-demo" style="background: var(--c-success-bg); color: var(--c-success); border-color: rgba(21,128,61,0.3); margin-bottom: 0.85rem;">
+                Active in Demo
+              </span>
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Refundable Security Deposits</h3>
+              <p class="text-sm" style="color: var(--c-charcoal-muted);">
+                High-value items specify transparent deposits refunded immediately when the gear is returned in good working condition.
+              </p>
+            </div>
+
+            <!-- Planned 1 -->
+            <div style="background: var(--c-ivory-card); border: 1px dashed var(--c-border); border-radius: var(--r-lg); padding: 1.75rem;">
+              <span class="badge-demo" style="margin-bottom: 0.85rem;">
+                Planned for Full Launch
+              </span>
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">University SSO Login</h3>
+              <p class="text-sm" style="color: var(--c-charcoal-muted);">
+                Integration with RGUKT student email credentials (@rgukt.ac.in) to automatically confirm student enrollment and hostel residency.
+              </p>
+            </div>
+
+            <!-- Planned 2 -->
+            <div style="background: var(--c-ivory-card); border: 1px dashed var(--c-border); border-radius: var(--r-lg); padding: 1.75rem;">
+              <span class="badge-demo" style="margin-bottom: 0.85rem;">
+                Planned for Full Launch
+              </span>
+              <h3 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Condition Photo Escrow</h3>
+              <p class="text-sm" style="color: var(--c-charcoal-muted);">
+                Digital timestamped photo logging at handover to prevent disputes regarding scratches, missing accessories, or battery health.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Campus FAQ Section -->
+      <section class="section-padding" style="background: var(--c-ivory-warm); border-top: 1px solid var(--c-border);">
+        <div class="container" style="max-width: 820px;">
+          <div class="section-header" style="text-align: center;">
+            <span class="kicker">Got Questions?</span>
+            <h2 class="heading-section">Frequently Asked Questions</h2>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 1rem;" id="faq-accordion">
+            <div style="background: var(--c-ivory-card); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 1.25rem;">
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--c-forest);">Where do handovers take place on campus?</h4>
+              <p class="text-sm" style="color: var(--c-charcoal-muted);">
+                Most students meet in well-lit public spots: outside the Central Library porch, ground floor of Student Activity Center (SAC), or the Omega Mess cafeteria foyer.
+              </p>
+            </div>
+
+            <div style="background: var(--c-ivory-card); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 1.25rem;">
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--c-forest);">What happens if an item is damaged?</h4>
+              <p class="text-sm" style="color: var(--c-charcoal-muted);">
+                Both parties test and inspect the item together during handover. Any pre-existing defects should be noted. For high-value electronics, the refundable deposit covers repair costs if accidental damage occurs.
+              </p>
+            </div>
+
+            <div style="background: var(--c-ivory-card); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 1.25rem;">
+              <h4 style="font-size: 1.05rem; margin-bottom: 0.35rem; color: var(--c-forest);">How does payment work in this prototype?</h4>
+              <p class="text-sm" style="color: var(--c-charcoal-muted);">
+                In this demo version, booking requests are simulated in browser state without real financial processing. During peer handover on campus, students use UPI (Google Pay, PhonePe) directly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ====================================================================
+         VIEW 2: BROWSE / EXPLORE ITEMS (`#browse`)
+         ==================================================================== -->
+    <div id="view-browse" class="app-view">
+      <div class="container section-padding">
+        <!-- Browse Top Header -->
+        <div class="section-header" style="margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.4rem;">
+            <a href="#home" style="font-size: 0.8rem; color: var(--c-charcoal-muted); font-weight: 600;">Home</a>
+            <span style="font-size: 0.8rem; color: var(--c-charcoal-muted);">/</span>
+            <span style="font-size: 0.8rem; color: var(--c-forest); font-weight: 700;">Explore Campus Equipment</span>
+          </div>
+          <h2 class="heading-section">All Campus Equipment</h2>
+          <p class="text-lead" style="margin-top: 0.25rem;">
+            Discover gear available for peer rental across RGUKT Nuzvid hostels and department labs.
+          </p>
+        </div>
+
+        <!-- Category Chips Bar -->
+        <div class="category-filter-strip" id="browse-category-chips">
+          <!-- Injected by JavaScript -->
+        </div>
+
+        <!-- Browse Main Layout -->
+        <div class="browse-layout">
+          <!-- Sidebar Filters -->
+          <aside class="browse-sidebar">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+              <h3 style="font-size: 1.05rem; color: var(--c-forest);">Filters</h3>
+              <button id="btn-reset-sidebar-filters" style="font-size: 0.78rem; color: var(--c-forest-soft); font-weight: 700;">Reset All</button>
+            </div>
+
+            <!-- Price Filter -->
+            <div class="filter-item-group">
+              <span class="sidebar-section-title">Max Daily Rent</span>
+              <div style="display: flex; flex-direction: column; gap: 0.35rem;">
+                <label class="checkbox-label">
+                  <input type="radio" name="filter-budget" value="All" checked /> Any Price
+                </label>
+                <label class="checkbox-label">
+                  <input type="radio" name="filter-budget" value="50" /> Under ₹50/day
+                </label>
+                <label class="checkbox-label">
+                  <input type="radio" name="filter-budget" value="100" /> Under ₹100/day
+                </label>
+                <label class="checkbox-label">
+                  <input type="radio" name="filter-budget" value="250" /> Under ₹250/day
+                </label>
+                <label class="checkbox-label">
+                  <input type="radio" name="filter-budget" value="500" /> Under ₹500/day
+                </label>
+              </div>
+            </div>
+
+            <!-- Condition Filter -->
+            <div class="filter-item-group">
+              <span class="sidebar-section-title">Condition</span>
+              <label class="checkbox-label">
+                <input type="checkbox" class="condition-checkbox" value="Like New" checked /> Like New
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="condition-checkbox" value="Excellent" checked /> Excellent
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" class="condition-checkbox" value="Good" checked /> Good
+              </label>
+            </div>
+
+            <!-- Owner Type Filter -->
+            <div class="filter-item-group">
+              <span class="sidebar-section-title">Owner Type</span>
+              <label class="checkbox-label">
+                <input type="radio" name="filter-owner" value="All" checked /> All Providers
+              </label>
+              <label class="checkbox-label">
+                <input type="radio" name="filter-owner" value="Student" /> Fellow Students
+              </label>
+              <label class="checkbox-label">
+                <input type="radio" name="filter-owner" value="Shop" /> Local Rental Shops
+              </label>
+            </div>
+
+            <!-- Handover Spots -->
+            <div class="filter-item-group">
+              <span class="sidebar-section-title">Pickup Spot</span>
+              <div class="text-xs" style="color: var(--c-charcoal-muted); line-height: 1.5;">
+                Handovers coordinated at SAC, Central Library, Omega Mess, AB-1 &amp; AB-2 corridors.
+              </div>
+            </div>
+          </aside>
+
+          <!-- Product Listing Grid & Top Controls -->
+          <div>
+            <div class="browse-top-bar">
+              <div style="display: flex; align-items: center; gap: 0.75rem; flex-grow: 1; max-width: 450px;">
+                <input type="text" id="browse-search-input" class="field-input" placeholder="Search by name, model, specs, or owner..." />
+              </div>
+
+              <div style="display: flex; align-items: center; gap: 0.85rem;">
+                <span class="text-xs" id="browse-results-count" style="font-weight: 700; color: var(--c-charcoal-muted);">
+                  Loading equipment...
+                </span>
+                <select id="browse-sort-select" class="field-select" style="padding: 0.45rem 2rem 0.45rem 0.85rem; font-size: 0.825rem; border-radius: var(--r-full);">
+                  <option value="featured">Featured First</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="products-grid" id="browse-products-grid">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         VIEW 3: PRODUCT DETAIL VIEW (`#product/:id`)
+         ==================================================================== -->
+    <div id="view-detail" class="app-view">
+      <div class="container section-padding">
+        <!-- Back Link -->
+        <div style="margin-bottom: 1.5rem;">
+          <a href="#browse" class="btn btn-secondary" style="padding: 0.45rem 1rem; font-size: 0.825rem;">
+            &larr; Back to Browse Gear
+          </a>
+        </div>
+
+        <div id="detail-view-container">
+          <!-- Populated by JavaScript based on item ID -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         VIEW 4: "LIST AN ITEM" MULTI-STEP FLOW (`#list-item`)
+         ==================================================================== -->
+    <div id="view-list-item" class="app-view">
+      <div class="container section-padding">
+        <div class="section-header" style="max-width: 680px;">
+          <span class="kicker">Share Gear &amp; Earn</span>
+          <h2 class="heading-section">List Your Equipment</h2>
+          <p class="text-lead" style="margin-top: 0.25rem;">
+            Help fellow RGUKT students prepare for exams or build engineering projects while earning rental income.
+          </p>
+        </div>
+
+        <div class="list-item-layout">
+          <!-- Multi-Step Form -->
+          <div style="background: var(--c-ivory-card); border: 1px solid var(--c-border); border-radius: var(--r-xl); padding: clamp(1.5rem, 3.5vw, 2.5rem); box-shadow: var(--shadow-sm);">
+            <!-- Step Indicators -->
+            <div class="step-indicator-bar" id="list-steps-bar">
+              <div class="step-dot is-active" id="dot-1"></div>
+              <div class="step-dot" id="dot-2"></div>
+              <div class="step-dot" id="dot-3"></div>
+            </div>
+
+            <form id="listing-multistep-form">
+              <!-- STEP 1: Gear Details -->
+              <div class="list-step-pane" id="step-pane-1">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.4rem; color: var(--c-forest);">Step 1: Equipment Details</h3>
+                <p class="text-sm" style="color: var(--c-charcoal-muted); margin-bottom: 1.5rem;">Give clear, accurate information so peers can find your item.</p>
+
+                <div class="form-group">
+                  <label class="form-label" for="list-input-title">Equipment Name &amp; Model</label>
+                  <input type="text" id="list-input-title" required class="form-control" placeholder="e.g. Casio fx-991EX ClassWiz or Arduino Uno Project Kit" />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="list-input-cat">Category</label>
+                    <select id="list-input-cat" class="form-control">
+                      <option value="Academic Equipment">Academic Equipment</option>
+                      <option value="Electronics">Electronics</option>
+                      <option value="Photography & Content">Photography &amp; Content</option>
+                      <option value="Electronics Projects">Electronics Projects</option>
+                      <option value="Accessories">Accessories</option>
+                      <option value="Events & Presentations">Events &amp; Presentations</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="list-input-cond">Condition</label>
+                    <select id="list-input-cond" class="form-control">
+                      <option value="Like New">Like New (Mint)</option>
+                      <option value="Excellent">Excellent</option>
+                      <option value="Good">Good (Working Order)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="list-input-desc">Description &amp; Specifications</label>
+                  <textarea id="list-input-desc" rows="3" required class="form-control" placeholder="Mention battery condition, installed software, cables, or semester lab compatibility..."></textarea>
+                </div>
+
+                <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+                  <button type="button" class="btn btn-primary" id="btn-next-step-1">Next: Pricing &amp; Deposit &rarr;</button>
+                </div>
+              </div>
+
+              <!-- STEP 2: Pricing & Deposit -->
+              <div class="list-step-pane" id="step-pane-2" style="display: none;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.4rem; color: var(--c-forest);">Step 2: Rental Rates &amp; Deposit</h3>
+                <p class="text-sm" style="color: var(--c-charcoal-muted); margin-bottom: 1.5rem;">Set realistic student rates in INR (₹).</p>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="list-input-daily">Daily Rental Rate (₹/day)</label>
+                    <input type="number" id="list-input-daily" required min="10" step="5" class="form-control" placeholder="e.g. 30" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="list-input-weekly">Weekly Rate (₹ - Optional)</label>
+                    <input type="number" id="list-input-weekly" min="30" step="10" class="form-control" placeholder="e.g. 150" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="list-input-deposit">Refundable Security Deposit (₹)</label>
+                  <input type="number" id="list-input-deposit" min="0" step="50" class="form-control" placeholder="e.g. 200 (Refunded when returned)" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="list-input-acc">Included Accessories (Comma-separated)</label>
+                  <input type="text" id="list-input-acc" class="form-control" placeholder="e.g. Cover Case, USB Cable, Spare Coin Battery" />
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
+                  <button type="button" class="btn btn-secondary" id="btn-prev-step-2">&larr; Back</button>
+                  <button type="button" class="btn btn-primary" id="btn-next-step-2">Next: Handover &amp; Publish &rarr;</button>
+                </div>
+              </div>
+
+              <!-- STEP 3: Handover & Publish -->
+              <div class="list-step-pane" id="step-pane-3" style="display: none;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 0.4rem; color: var(--c-forest);">Step 3: Campus Handover Details</h3>
+                <p class="text-sm" style="color: var(--c-charcoal-muted); margin-bottom: 1.5rem;">Where should peers meet you for the exchange?</p>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="list-input-owner">Your Full Name</label>
+                    <input type="text" id="list-input-owner" required class="form-control" placeholder="e.g. Sai Krishna" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="list-input-dept">RGUKT Dept &amp; Year</label>
+                    <input type="text" id="list-input-dept" required class="form-control" placeholder="e.g. E3 CSE or E4 ECE" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="list-input-spot">Preferred Campus Handover Location</label>
+                  <input type="text" id="list-input-spot" required class="form-control" placeholder="e.g. Central Library Porch or SAC Foyer" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="list-input-phone">WhatsApp Number (For Peer Coordination)</label>
+                  <input type="tel" id="list-input-phone" required class="form-control" placeholder="10-digit mobile number" />
+                </div>
+
+                <div style="display: flex; justify-content: space-between; margin-top: 1.5rem;">
+                  <button type="button" class="btn btn-secondary" id="btn-prev-step-3">&larr; Back</button>
+                  <button type="submit" class="btn btn-lime">Publish Listing on CampusFind</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Live Updating Preview Card -->
+          <div class="preview-sticky-wrap">
+            <span class="kicker">Live Preview</span>
+            <div class="product-card" style="box-shadow: var(--shadow-md);">
+              <div class="product-card-media" style="height: 190px;" id="live-preview-art">
+                <!-- Illustrated SVG injected dynamically -->
+              </div>
+              <div class="product-card-body">
+                <span class="product-pickup-line" id="live-prev-spot">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Central Library / SAC</span>
+                </span>
+                <h4 class="product-card-title" id="live-prev-title">Casio fx-991EX ClassWiz</h4>
+                <div class="product-owner-row">
+                  <span id="live-prev-owner">Your Name</span>
+                  <span class="owner-type-chip" id="live-prev-dept">Student</span>
+                </div>
+                <div class="product-card-footer">
+                  <div class="price-group">
+                    <span class="price-bold" id="live-prev-price">₹30</span>
+                    <span class="price-unit">/day</span>
+                  </div>
+                  <span class="badge-demo">Draft Preview</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         VIEW 5: DASHBOARD (`#dashboard`)
+         ==================================================================== -->
+    <div id="view-dashboard" class="app-view">
+      <div class="container section-padding">
+        <div class="section-header">
+          <span class="kicker">RGUKT Student Dashboard</span>
+          <h2 class="heading-section">My Rentals &amp; Gear Requests</h2>
+          <p class="text-lead" style="margin-top: 0.25rem;">
+            Track your borrowed equipment, manage bookings, and coordinate handovers.
+          </p>
+        </div>
+
+        <!-- Dashboard Tabs -->
+        <div class="dashboard-tabs-bar" role="tablist">
+          <button class="dash-tab-btn is-active" data-dash-tab="rentals">My Rentals (Renter View)</button>
+          <button class="dash-tab-btn" data-dash-tab="listings">My Gear Listings (Owner View)</button>
+          <button class="dash-tab-btn" data-dash-tab="inbox">Incoming Booking Requests</button>
+        </div>
+
+        <div id="dash-tab-pane-content">
+          <!-- Injected dynamically by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         VIEW 6: STUDENT PROFILE (`#profile`)
+         ==================================================================== -->
+    <div id="view-profile" class="app-view">
+      <div class="container section-padding" style="max-width: 780px;">
+        <div class="section-header">
+          <span class="kicker">Campus Identity</span>
+          <h2 class="heading-section">Student Profile</h2>
+        </div>
+
+        <div style="background: var(--c-ivory-card); border: 1px solid var(--c-border); border-radius: var(--r-xl); padding: clamp(1.5rem, 3.5vw, 2.5rem); box-shadow: var(--shadow-sm);">
+          <div style="display: flex; align-items: center; gap: 1.25rem; margin-bottom: 2rem;">
+            <div style="width: 68px; height: 68px; border-radius: 50%; background: var(--c-forest); color: var(--c-lime); font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; display: flex; align-items: center; justify-content: center;">
+              RG
+            </div>
+            <div>
+              <h3 style="font-size: 1.4rem; color: var(--c-forest);">Rahul Varma</h3>
+              <p class="text-sm" style="color: var(--c-charcoal-muted);">Rajiv Gandhi University of Knowledge Technologies, Nuzvid</p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <div>
+              <span class="text-xs" style="font-weight: 700; color: var(--c-charcoal-muted); text-transform: uppercase;">Roll Number</span>
+              <p style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--c-forest); margin-top: 2px;">N210452 (Demo)</p>
+            </div>
+            <div>
+              <span class="text-xs" style="font-weight: 700; color: var(--c-charcoal-muted); text-transform: uppercase;">Department &amp; Year</span>
+              <p style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--c-forest); margin-top: 2px;">E3 Computer Science (CSE)</p>
+            </div>
+            <div>
+              <span class="text-xs" style="font-weight: 700; color: var(--c-charcoal-muted); text-transform: uppercase;">Hostel Block</span>
+              <p style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--c-forest); margin-top: 2px;">Hostel K3 / I-Block Foyer</p>
+            </div>
+            <div>
+              <span class="text-xs" style="font-weight: 700; color: var(--c-charcoal-muted); text-transform: uppercase;">Peer Trust Score</span>
+              <p style="font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--c-success); margin-top: 2px;">4.9 / 5.0 (Peer Verified)</p>
+            </div>
+          </div>
+
+          <div style="padding-top: 1.5rem; border-top: 1px dashed var(--c-border); font-size: 0.8125rem; color: var(--c-charcoal-muted); line-height: 1.5;">
+            * In this prototype, profile data is kept in client browser storage. In production, this will connect to the RGUKT student intranet directory.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         VIEW 7: 404 NOT FOUND (`#404`)
+         ==================================================================== -->
+    <div id="view-404" class="app-view">
+      <div class="container section-padding" style="text-align: center; max-width: 620px;">
+        <span style="font-family: var(--font-display); font-size: 5rem; font-weight: 800; color: var(--c-forest); line-height: 1;">404</span>
+        <h2 class="heading-section" style="margin: 1rem 0 0.5rem;">Looks like this link wandered off.</h2>
+        <p class="text-lead" style="margin-bottom: 2rem;">
+          It probably strolled past the SAC ground floor, crossed the Omega mess walkway, and got lost near the campus mango orchards.
+        </p>
+        <a href="#home" class="btn btn-primary">Take Me Back to CampusFind</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ====================================================================
+       MODALS & DRAWERS
+       ==================================================================== -->
+
+  <!-- Quick View Modal -->
+  <div class="modal-backdrop" id="quick-view-modal" role="dialog" aria-modal="true" aria-label="Product Quick View">
+    <div class="modal-panel" id="quick-view-content">
+      <!-- Injected by JavaScript -->
+    </div>
+  </div>
+
+  <!-- Booking Confirmation Modal -->
+  <div class="modal-backdrop" id="booking-confirm-modal" role="dialog" aria-modal="true" aria-label="Booking Confirmation">
+    <div class="modal-panel" style="max-width: 520px; text-align: center;">
+      <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--c-lime); color: var(--c-forest-dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span class="badge-demo" style="margin-bottom: 0.65rem;">Request Submitted (Demo)</span>
+      <h3 style="font-family: var(--font-display); font-size: 1.45rem; color: var(--c-forest); margin-bottom: 0.5rem;" id="confirm-modal-title">
+        Booking Request Sent!
+      </h3>
+      <p class="text-sm" style="color: var(--c-charcoal-muted); margin-bottom: 1.5rem;" id="confirm-modal-sub">
+        Your rental request has been forwarded to the owner. You can track its approval status in your Dashboard.
+      </p>
+      <div style="background: var(--c-ivory-warm); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 1.15rem; text-align: left; margin-bottom: 1.5rem;" id="confirm-modal-details">
+        <!-- Details injected by JS -->
+      </div>
+      <div style="display: flex; gap: 0.75rem; justify-content: center;">
+        <a href="#dashboard" class="btn btn-primary" onclick="document.getElementById('booking-confirm-modal').classList.remove('is-open');">
+          View in Dashboard
+        </a>
+        <button class="btn btn-secondary" onclick="document.getElementById('booking-confirm-modal').classList.remove('is-open');">
+          Keep Browsing
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Drawer -->
+  <div class="modal-backdrop" id="wishlist-modal-backdrop" role="dialog" aria-modal="true" aria-label="Saved Equipment">
+    <div style="position: fixed; top: 0; right: 0; bottom: 0; width: min(380px, 90vw); background: var(--c-ivory-card); padding: 2rem 1.5rem; display: flex; flex-direction: column; z-index: 2100; box-shadow: var(--shadow-modal);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; padding-bottom: 0.85rem; border-bottom: 1px solid var(--c-border);">
+        <h3 style="font-size: 1.15rem; color: var(--c-forest);">Saved Gear Wishlist</h3>
+        <button class="modal-close-btn" id="btn-close-wishlist" style="position: static;" aria-label="Close wishlist">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div id="wishlist-drawer-items" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 0.85rem;">
+        <!-- Injected by JavaScript -->
+      </div>
+      <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--c-border);">
+        <a href="#browse" class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('wishlist-modal-backdrop').classList.remove('is-open');">
+          Explore More Gear
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- ====================================================================
+       FOOTER
+       ==================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div>
+          <a href="#home" class="brand-wordmark" style="color: var(--c-white); margin-bottom: 0.85rem;">
+            <span class="brand-cube-icon" style="background: var(--c-lime); color: var(--c-forest-dark);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              </svg>
+            </span>
+            <span>CampusFind<span style="color: var(--c-lime);">.</span></span>
+          </a>
+          <p style="font-size: 0.875rem; color: var(--c-sage); line-height: 1.6; margin-top: 0.5rem; max-width: 320px;">
+            Need it? Rent it on campus. The campus-exclusive equipment rental marketplace for students of Rajiv Gandhi University of Knowledge Technologies (RGUKT), Nuzvid.
+          </p>
+          <div style="margin-top: 1.25rem;">
+            <span class="campus-chip" style="background: rgba(198, 244, 50, 0.15); color: var(--c-lime); border-color: rgba(198, 244, 50, 0.3);">
+              RGUKT Nuzvid Community Edition
+            </span>
+          </div>
+        </div>
+
+        <!-- Links: Equipment -->
+        <div>
+          <h4 class="footer-col-title">Equipment</h4>
+          <ul class="footer-links-list">
+            <li><a href="#browse" class="footer-link">Academic Equipment</a></li>
+            <li><a href="#browse" class="footer-link">Electronics &amp; Laptops</a></li>
+            <li><a href="#browse" class="footer-link">Photography &amp; Content</a></li>
+            <li><a href="#browse" class="footer-link">Arduino &amp; ESP32 Projects</a></li>
+            <li><a href="#browse" class="footer-link">Events &amp; Presentations</a></li>
+          </ul>
+        </div>
+
+        <!-- Links: Platform -->
+        <div>
+          <h4 class="footer-col-title">Platform</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home" class="footer-link">Home Overview</a></li>
+            <li><a href="#browse" class="footer-link">Browse Marketplace</a></li>
+            <li><a href="#list-item" class="footer-link">List Your Equipment</a></li>
+            <li><a href="#dashboard" class="footer-link">Student Dashboard</a></li>
+            <li><a href="#profile" class="footer-link">Demo Profile</a></li>
+          </ul>
+        </div>
+
+        <!-- Links: Community Guidelines -->
+        <div>
+          <h4 class="footer-col-title">Campus Rules</h4>
+          <ul class="footer-links-list">
+            <li><a href="#" class="footer-link" onclick="alert('Campus Handover Rule: Always verify peer student identity and inspect items in public areas (SAC/Library).'); return false;">Handover Safety</a></li>
+            <li><a href="#" class="footer-link" onclick="alert('Zero Commission: Free student peer rentals during our RGUKT beta launch.'); return false;">Fee Structure</a></li>
+            <li><a href="#" class="footer-link" onclick="alert('Condition Escrow: Inspect items together at pickup and test batteries/chargers.'); return false;">Condition Standard</a></li>
+            <li><a href="#" class="footer-link" onclick="alert('Disputes: Peer issues are mediated with the student council and SAC coordinators.'); return false;">SAC Mediation</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter & Contact -->
+        <div>
+          <h4 class="footer-col-title">Campus Gear Alerts</h4>
+          <p style="font-size: 0.825rem; color: var(--c-sage); margin-bottom: 0.85rem; line-height: 1.5;">
+            Get notified when exam calculators or project kits are posted near your hostel block.
+          </p>
+          <form onsubmit="event.preventDefault(); showToast('Subscribed! We will alert your student email for exam gear.'); this.reset();" style="display: flex; gap: 0.4rem;">
+            <input type="email" placeholder="N210XXX@rgukt.ac.in" required style="padding: 0.55rem 0.75rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18); border-radius: var(--r-full); color: var(--c-white); font-size: 0.8rem; flex-grow: 1;" aria-label="Student Email" />
+            <button type="submit" class="btn btn-lime" style="padding: 0.55rem 1rem; font-size: 0.78rem;">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Demo Disclaimer Box -->
+      <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--r-sm); padding: 0.85rem 1.15rem; font-size: 0.75rem; color: var(--c-sage); line-height: 1.5; margin-bottom: 2rem;">
+        <strong>Prototype Disclosure:</strong> CampusFind is an independent student product prototype designed for the RGUKT Nuzvid campus community (Eluru District, Andhra Pradesh). All sample listings, owner profiles, and rates are realistic test representations. No real financial transactions are processed.
+      </div>
+
+      <!-- Bottom Bar -->
+      <div style="padding-top: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.8rem; color: var(--c-sage);">
+        <div>&copy; 2026 CampusFind RGUKT Nuzvid. Hand-crafted with Space Grotesk &amp; DM Sans.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <span>Need it? Rent it on campus.</span>
+          <span>Zero Accommodation • Physical Equipment Only</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       16. JAVASCRIPT: DATA, SPA ROUTER, CALCULATOR, & LOCAL STATE
+       ========================================================================== -->
+  <script>
+    /* ----------------------------------------------------------------------
+       A. ART-DIRECTED INLINE SVG PRODUCT PORTRAITS (No External Image Assets)
+       ---------------------------------------------------------------------- */
+    const ProductArt = {
+      calculator: () => `
+        <svg viewBox="0 0 160 200" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="25" y="15" width="110" height="170" rx="14" fill="#1b2420" stroke="#37473f" stroke-width="3"/>
+          <rect x="35" y="30" width="90" height="36" rx="6" fill="#889e8f"/>
+          <text x="42" y="54" font-family="monospace" font-size="13" font-weight="700" fill="#112217">fx-991EX ClassWiz</text>
+          <!-- Solar cell -->
+          <rect x="94" y="20" width="30" height="8" rx="2" fill="#443525" stroke="#2b2014"/>
+          <!-- Keypad buttons -->
+          <circle cx="48" cy="80" r="7" fill="#42554b"/>
+          <circle cx="70" cy="80" r="7" fill="#42554b"/>
+          <circle cx="92" cy="80" r="7" fill="#42554b"/>
+          <circle cx="114" cy="80" r="7" fill="#c6f432"/>
+          <rect x="40" y="98" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="62" y="98" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="84" y="98" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="106" y="98" width="16" height="12" rx="3" fill="#c6f432"/>
+          <rect x="40" y="118" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="62" y="118" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="84" y="118" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="106" y="118" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="40" y="138" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="62" y="138" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="84" y="138" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="106" y="138" width="16" height="12" rx="3" fill="#2d3b33"/>
+          <rect x="40" y="158" width="38" height="14" rx="4" fill="#0f2e22"/>
+          <rect x="84" y="158" width="38" height="14" rx="4" fill="#c6f432"/>
+        </svg>
+      `,
+      camera: () => `
+        <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="25" y="45" width="150" height="95" rx="16" fill="#18221d" stroke="#2d3d34" stroke-width="3"/>
+          <path d="M60 45 L72 26 L128 26 L140 45 Z" fill="#223028" stroke="#2d3d34" stroke-width="2"/>
+          <circle cx="150" cy="35" r="5" fill="#c6f432"/>
+          <!-- Lens ring -->
+          <circle cx="100" cy="92" r="42" fill="#0d1410" stroke="#3d5246" stroke-width="4"/>
+          <circle cx="100" cy="92" r="32" fill="#14211a" stroke="#c6f432" stroke-width="2"/>
+          <circle cx="100" cy="92" r="22" fill="#0b120e"/>
+          <circle cx="92" cy="84" r="7" fill="rgba(255,255,255,0.3)"/>
+          <!-- Red accent badge -->
+          <circle cx="45" cy="65" r="4" fill="#ef4444"/>
+        </svg>
+      `,
+      laptop: () => `
+        <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Screen -->
+          <rect x="35" y="25" width="130" height="85" rx="8" fill="#0f1914" stroke="#2d3d34" stroke-width="3"/>
+          <rect x="44" y="34" width="112" height="67" rx="3" fill="#172e23"/>
+          <!-- Code on screen -->
+          <line x1="52" y1="46" x2="88" y2="46" stroke="#c6f432" stroke-width="3" stroke-linecap="round"/>
+          <line x1="52" y1="56" x2="115" y2="56" stroke="#88b598" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="52" y1="66" x2="102" y2="66" stroke="#88b598" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="60" y1="76" x2="135" y2="76" stroke="#c6f432" stroke-width="2" stroke-linecap="round"/>
+          <line x1="60" y1="86" x2="90" y2="86" stroke="#526057" stroke-width="2" stroke-linecap="round"/>
+          <!-- Base -->
+          <path d="M15 112 L185 112 L175 128 L25 128 Z" fill="#223028" stroke="#3d5246" stroke-width="2"/>
+          <rect x="85" y="114" width="30" height="4" rx="2" fill="#3d5246"/>
+          <!-- TrackPoint dot -->
+          <circle cx="100" cy="116" r="2" fill="#ef4444"/>
+        </svg>
+      `,
+      arduino: () => `
+        <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="30" width="140" height="100" rx="8" fill="#0b5b66" stroke="#0e7887" stroke-width="3"/>
+          <!-- USB port -->
+          <rect x="18" y="44" width="22" height="20" rx="2" fill="#c0cbd1" stroke="#8a99a0"/>
+          <!-- Power jack -->
+          <rect x="22" y="86" width="20" height="24" rx="3" fill="#1b2420"/>
+          <!-- MCU chip -->
+          <rect x="75" y="55" width="50" height="50" rx="4" fill="#16221c"/>
+          <circle cx="83" cy="63" r="3" fill="#c6f432"/>
+          <text x="86" y="85" font-family="monospace" font-size="9" font-weight="700" fill="#a4b3a9">ATmega</text>
+          <!-- Headers -->
+          <rect x="65" y="34" width="95" height="8" rx="1" fill="#1c2b23"/>
+          <rect x="65" y="118" width="95" height="8" rx="1" fill="#1c2b23"/>
+          <!-- Reset button -->
+          <circle cx="55" cy="40" r="5" fill="#ef4444"/>
+          <text x="60" y="110" font-family="monospace" font-size="8" font-weight="700" fill="#c6f432">UNO R3</text>
+        </svg>
+      `,
+      tripod: () => `
+        <svg viewBox="0 0 160 200" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Mount head -->
+          <rect x="60" y="24" width="40" height="18" rx="4" fill="#2d3b33" stroke="#485c50" stroke-width="2"/>
+          <rect x="72" y="14" width="16" height="10" rx="2" fill="#c6f432"/>
+          <circle cx="95" cy="33" r="4" fill="#3b82f6"/>
+          <!-- Central column -->
+          <line x1="80" y1="42" x2="80" y2="85" stroke="#3d5246" stroke-width="6" stroke-linecap="round"/>
+          <!-- 3 Legs -->
+          <line x1="80" y1="85" x2="25" y2="185" stroke="#1f2c25" stroke-width="5" stroke-linecap="round"/>
+          <line x1="80" y1="85" x2="80" y2="188" stroke="#2a3b32" stroke-width="5" stroke-linecap="round"/>
+          <line x1="80" y1="85" x2="135" y2="185" stroke="#1f2c25" stroke-width="5" stroke-linecap="round"/>
+          <!-- Spreaders -->
+          <line x1="52" y1="135" x2="108" y2="135" stroke="#3d5246" stroke-width="2"/>
+        </svg>
+      `,
+      projector: () => `
+        <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="25" y="45" width="150" height="70" rx="12" fill="#202c25" stroke="#3d5246" stroke-width="3"/>
+          <!-- Lens beam -->
+          <circle cx="65" cy="80" r="22" fill="#0f1713" stroke="#c6f432" stroke-width="3"/>
+          <circle cx="65" cy="80" r="14" fill="#2563eb"/>
+          <circle cx="60" cy="75" r="5" fill="rgba(255,255,255,0.4)"/>
+          <!-- Grill & Buttons -->
+          <line x1="110" y1="62" x2="160" y2="62" stroke="#485c50" stroke-width="3" stroke-linecap="round"/>
+          <line x1="110" y1="72" x2="160" y2="72" stroke="#485c50" stroke-width="3" stroke-linecap="round"/>
+          <line x1="110" y1="82" x2="160" y2="82" stroke="#485c50" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="120" cy="100" r="4" fill="#c6f432"/>
+          <circle cx="136" cy="100" r="4" fill="#485c50"/>
+          <circle cx="152" cy="100" r="4" fill="#485c50"/>
+        </svg>
+      `,
+      mic: () => `
+        <svg viewBox="0 0 160 200" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Transmitter body -->
+          <rect x="45" y="60" width="70" height="90" rx="12" fill="#1b2420" stroke="#3d5246" stroke-width="3"/>
+          <!-- Clip -->
+          <rect x="65" y="40" width="30" height="30" rx="4" fill="#2d3b33"/>
+          <!-- Mic mesh top -->
+          <rect x="62" y="24" width="36" height="28" rx="8" fill="#121815" stroke="#c6f432" stroke-width="2"/>
+          <!-- Screen / LED indicator -->
+          <rect x="58" y="80" width="44" height="22" rx="4" fill="#0a100d"/>
+          <circle cx="70" cy="91" r="3" fill="#c6f432"/>
+          <line x1="78" y1="91" x2="94" y2="91" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"/>
+          <text x="68" y="132" font-family="monospace" font-size="8" font-weight="700" fill="#a4b3a9">WIRELESS</text>
+        </svg>
+      `,
+      powerbank: () => `
+        <svg viewBox="0 0 160 200" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="42" y="25" width="76" height="150" rx="12" fill="#1b2420" stroke="#37473f" stroke-width="3"/>
+          <!-- Ports top -->
+          <rect x="52" y="32" width="16" height="6" rx="2" fill="#0d1310"/>
+          <rect x="74" y="32" width="12" height="6" rx="2" fill="#c6f432"/>
+          <rect x="92" y="32" width="16" height="6" rx="2" fill="#0d1310"/>
+          <!-- Battery level indicator -->
+          <rect x="60" y="60" width="40" height="12" rx="3" fill="#0a100d"/>
+          <circle cx="68" cy="66" r="2.5" fill="#c6f432"/>
+          <circle cx="76" cy="66" r="2.5" fill="#c6f432"/>
+          <circle cx="84" cy="66" r="2.5" fill="#c6f432"/>
+          <circle cx="92" cy="66" r="2.5" fill="#526057"/>
+          <text x="56" y="150" font-family="monospace" font-size="10" font-weight="700" fill="#7a8a81">20,000mAh</text>
+        </svg>
+      `,
+      esp32: () => `
+        <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="40" y="25" width="120" height="110" rx="6" fill="#18241e" stroke="#2d3d34" stroke-width="3"/>
+          <!-- Metal shield -->
+          <rect x="70" y="35" width="60" height="50" rx="4" fill="#94a3b8" stroke="#64748b"/>
+          <text x="80" y="62" font-family="monospace" font-size="8" font-weight="700" fill="#1e293b">ESP32-WROOM</text>
+          <!-- Antenna trace -->
+          <path d="M72 40 L72 37 L128 37 L128 40" stroke="#f59e0b" stroke-width="2"/>
+          <!-- OLED Display -->
+          <rect x="65" y="92" width="70" height="30" rx="3" fill="#020617" stroke="#38bdf8"/>
+          <text x="73" y="108" font-family="monospace" font-size="9" fill="#38bdf8">WiFi OK: 100%</text>
+          <text x="73" y="118" font-family="monospace" font-size="7" fill="#c6f432">IP: 192.168.1.14</text>
+          <!-- Dual Pin headers -->
+          <line x1="48" y1="30" x2="48" y2="130" stroke="#c6f432" stroke-width="3" stroke-dasharray="2 4"/>
+          <line x1="152" y1="30" x2="152" y2="130" stroke="#c6f432" stroke-width="3" stroke-dasharray="2 4"/>
+        </svg>
+      `,
+      drafter: () => `
+        <svg viewBox="0 0 200 160" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Clamp mount -->
+          <rect x="25" y="25" width="28" height="24" rx="4" fill="#334155" stroke="#1e293b"/>
+          <circle cx="39" cy="37" r="5" fill="#f59e0b"/>
+          <!-- Parallel Arms -->
+          <line x1="45" y1="35" x2="115" y2="70" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+          <line x1="45" y1="42" x2="115" y2="77" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="115" cy="74" r="7" fill="#1e293b"/>
+          <!-- Second linkage -->
+          <line x1="115" y1="74" x2="145" y2="115" stroke="#64748b" stroke-width="4" stroke-linecap="round"/>
+          <!-- Scale Head -->
+          <circle cx="145" cy="115" r="14" fill="#0f2e22" stroke="#c6f432" stroke-width="2"/>
+          <!-- L-shaped transparent scale -->
+          <rect x="145" y="112" width="45" height="10" rx="1" fill="rgba(198,244,50,0.3)" stroke="#c6f432"/>
+          <rect x="141" y="70" width="10" height="45" rx="1" fill="rgba(198,244,50,0.3)" stroke="#c6f432"/>
+        </svg>
+      `
+    };
+
+    /* ----------------------------------------------------------------------
+       B. DATA STORE (Seeded with Realistic RGUKT Campus Equipment)
+       ---------------------------------------------------------------------- */
+    const initialGearData = [
+      {
+        id: "prod-01",
+        title: "Casio fx-991EX ClassWiz Scientific Calculator",
+        category: "Academic Equipment",
+        dailyRate: 30,
+        weeklyRate: 150,
+        deposit: 200,
+        condition: "Like New",
+        availability: "Available Now",
+        ownerType: "Student",
+        owner: {
+          name: "Sai Krishna M.",
+          dept: "E4 CSE",
+          pickupSpot: "SAC Ground Floor or Central Library Porch",
+          rating: "4.9 ★ (18 rentals)"
+        },
+        artKey: "calculator",
+        description: "Must-have for Engineering Maths, GATE preparation, and end-semester exams. 552 functions including matrix operations, vector math, and calculus. High-res LCD with fresh coin battery and hard case.",
+        includedAccessories: ["Slide-on Hard Protective Cover", "Formula Reference Sheet", "Spare Coin Cell"],
+        featured: true,
+        terms: "Return within 24h of final exam. Do not write roll numbers on the plastic body."
+      },
+      {
+        id: "prod-02",
+        title: "Lenovo ThinkPad Core i5 (16GB RAM, MATLAB & Ubuntu)",
+        category: "Electronics",
+        dailyRate: 250,
+        weeklyRate: 1200,
+        deposit: 1500,
+        condition: "Excellent",
+        availability: "Available Now",
+        ownerType: "Student",
+        owner: {
+          name: "Pooja Reddy",
+          dept: "E3 ECE",
+          pickupSpot: "Hostel I1 Foyer or AB-2 Foyer",
+          rating: "4.8 ★ (12 rentals)"
+        },
+        artKey: "laptop",
+        description: "Configured specifically for coding lab assignments, AutoCAD, MATLAB, and simulation workloads. Dual-boot Ubuntu 22.04 LTS & Windows 11 with VS Code and Keil pre-installed.",
+        includedAccessories: ["65W Fast USB-C Charger", "Padded Laptop Sleeve", "Wireless Mouse"],
+        featured: true,
+        terms: "Guest student account created. Do not factory reset OS partitions."
+      },
+      {
+        id: "prod-03",
+        title: "Canon EOS 200D II DSLR with 18-55mm STM Kit Lens",
+        category: "Photography & Content",
+        dailyRate: 400,
+        weeklyRate: 2000,
+        deposit: 2000,
+        condition: "Excellent",
+        availability: "Available Now",
+        ownerType: "Student",
+        owner: {
+          name: "Karthik Varma (Cygnus Media)",
+          dept: "E4 MECH",
+          pickupSpot: "SAC Media Room",
+          rating: "5.0 ★ (26 rentals)"
+        },
+        artKey: "camera",
+        description: "Perfect for cultural fests, department farewells, club promotions, and photography assignments. 24.1MP Dual Pixel CMOS AF with 4K recording and articulated touchscreen.",
+        includedAccessories: ["18-55mm Zoom Lens", "2x Batteries & Dual Charger", "64GB Extreme SD Card", "Camera Bag"],
+        featured: true,
+        terms: "Format SD card upon return. Keep camera neck strap secured at all times."
+      },
+      {
+        id: "prod-04",
+        title: "Arduino Uno R3 & 37-in-1 Sensor Project Starter Kit",
+        category: "Electronics Projects",
+        dailyRate: 80,
+        weeklyRate: 400,
+        deposit: 300,
+        condition: "Like New",
+        availability: "Available Now",
+        ownerType: "Student",
+        owner: {
+          name: "Venkatesh Naidu (Robotics Club)",
+          dept: "E3 ECE",
+          pickupSpot: "AB-2 ECE Embedded Systems Lab",
+          rating: "4.9 ★ (19 rentals)"
+        },
+        artKey: "arduino",
+        description: "Complete mini-project bundle for ECE, CSE, and EEE engineering lab evaluations. Includes genuine Arduino Uno, 830-point breadboard, ultrasonic, PIR motion, DHT11, relay, and 65 jumper wires.",
+        includedAccessories: ["Arduino Uno Board", "830-tie Breadboard", "37 Sensor Modules in Box", "USB-B Cable"],
+        featured: true,
+        terms: "Please do not solder directly onto the main module header pins."
+      },
+      {
+        id: "prod-05",
+        title: "Heavy Duty 65\" Aluminum Camera & Phone Tripod",
+        category: "Photography & Content",
+        dailyRate: 50,
+        weeklyRate: 250,
+        deposit: 200,
+        condition: "Good",
+        availability: "Available Now",
+        ownerType: "Student",
+        owner: {
+          name: "Divya Sri",
+          dept: "E3 Civil",
+          pickupSpot: "Hostel I2 Entrance or Central Library",
+          rating: "4.7 ★ (8 rentals)"
+        },
+        artKey: "tripod",
+        description: "Stable 3-way pan head tripod suitable for DSLR cameras, mobile phone recordings, presentation defenses, and lab surveying recordings. Built-in bubble level and quick release plate.",
+        includedAccessories: ["Universal Phone Clamp", "Carrying Bag with Strap", "Quick Release Plate"],
+        featured: false,
+        terms: "Wipe dust before return if used outdoors."
+      },
+      {
+        id: "prod-06",
+        title: "Portable 1080p LED Projector (HDMI / USB)",
+        category: "Events & Presentations",
+        dailyRate: 200,
+        weeklyRate: 950,
+        deposit: 1000,
+        condition: "Like New",
+        availability: "Available Now",
+        ownerType: "Shop",
+        owner: {
+          name: "Nuzvid TechRentals",
+          dept: "Local Rental Shop",
+          pickupSpot: "RGUKT Main Security Gate (North Gate)",
+          rating: "4.9 ★ (44 rentals)"
+        },
+        artKey: "projector",
+        description: "Crisp 4500 lumens projector up to 120-inch projection with built-in speaker. Ideal for project defenses, seminar presentations, student club screenings, and hostel study group marathons.",
+        includedAccessories: ["5m HDMI Cable", "Power Adapter", "Infrared Remote", "Tabletop Stand"],
+        featured: false,
+        terms: "Allow 5-minute lamp cooling before unplugging."
+      },
+      {
+        id: "prod-07",
+        title: "Wireless Collar Clip Microphone (Type-C & 3.5mm)",
+        category: "Accessories",
+        dailyRate: 100,
+        weeklyRate: 450,
+        deposit: 400,
+        condition: "Like New",
+        availability: "Available Now",
+        ownerType: "Student",
+        owner: {
+          name: "Praveen Kumar",
+          dept: "E2 CSE",
+          pickupSpot: "Hostel K2 Walkway or SAC",
+          rating: "4.8 ★ (9 rentals)"
+        },
+        artKey: "mic",
+        description: "Noise-canceling wireless lapel mic with 20m range. Essential for seminar presentations, college fest anchor vlogging, and online viva recordings with zero audio latency.",
+        includedAccessories: ["Transmitter & Receiver", "Type-C Adapter", "3.5mm TRS Cable", "Furry Windscreen"],
+        featured: false,
+        terms: "Recharge to 100% before returning."
+      },
+      {
+        id: "prod-08",
+        title: "20,000mAh 22.5W Fast Charging Power Bank with LED",
+        category: "Accessories",
+        dailyRate: 25,
+        weeklyRate: 120,
+        deposit: 150,
+        condition: "Good",
+        availability: "Available Now",
+        ownerType: "Student",
+        owner: {
+          name: "Ganesh M.",
+          dept: "E3 Mech",
+          pickupSpot: "Omega Mess Cafeteria Foyer",
+          rating: "4.7 ★ (15 rentals)"
+        },
+        artKey: "powerbank",
+        description: "Triple-output fast charging power bank. Essential for late-night exam prep at Central Library or power contingencies during project submissions.",
+        includedAccessories: ["Type-C Fast Charge Cable", "Micro-USB Cable"],
+        featured: false,
+        terms: "Return with at least 50% charge."
+      },
+      {
+        id: "prod-09",
+        title: "ESP32 IoT Dual-Core Wi-Fi & BLE Board with OLED",
+        category: "Electronics Projects",
+        dailyRate: 60,
+        weeklyRate: 300,
+        deposit: 250,
+        condition: "Like New",
+        availability: "Available Now",
+        ownerType: "Student",
+        owner: {
+          name: "Ananya B.",
+          dept: "E4 ECE",
+          pickupSpot: "AB-2 ECE Lab Room 204",
+          rating: "5.0 ★ (11 rentals)"
+        },
+        artKey: "esp32",
+        description: "IoT dev board with integrated 0.96-inch OLED screen, Wi-Fi 802.11 b/g/n, and BLE. Ideal for smart campus projects, telemetry, and hackathon prototypes.",
+        includedAccessories: ["ESP32 Board with Screen", "Micro-USB Cable", "Jumper Wires"],
+        featured: false,
+        terms: "Please do not exceed 3.3V GPIO input voltage."
+      },
+      {
+        id: "prod-10",
+        title: "Engineering Mini Drafter & Sheet Clips Bundle",
+        category: "Academic Equipment",
+        dailyRate: 40,
+        weeklyRate: 180,
+        deposit: 150,
+        condition: "Good",
+        availability: "Available Now",
+        ownerType: "Student",
+        owner: {
+          name: "Suresh Babu",
+          dept: "E1 Mech",
+          pickupSpot: "AB-1 Drawing Hall or Hostel K4",
+          rating: "4.6 ★ (14 rentals)"
+        },
+        artKey: "drafter",
+        description: "Standard mechanical engineering drafter with steel arms and unbreakable scale. Essential for Engineering Graphics and Drawing (EGD) lab sessions and exams without a full purchase.",
+        includedAccessories: ["Mini Drafter with Clamping Arm", "Carrying Hard Cover", "4x Steel Sheet Clips"],
+        featured: false,
+        terms: "Check scale alignment together before leaving handover."
+      }
+    ];
+
+    const initialBookings = [
+      {
+        id: "b-101",
+        productId: "prod-01",
+        productTitle: "Casio fx-991EX ClassWiz Calculator",
+        artKey: "calculator",
+        ownerName: "Sai Krishna M. (E4 CSE)",
+        pickupSpot: "SAC Ground Floor",
+        startDate: "2026-10-28",
+        endDate: "2026-10-30",
+        days: 2,
+        dailyRate: 30,
+        total: 60,
+        deposit: 200,
+        status: "Approved",
+        statusStep: 2, // 1: Requested, 2: Approved, 3: Picked up, 4: Returned
+        renterName: "Rahul Varma (N210452)"
+      },
+      {
+        id: "b-102",
+        productId: "prod-03",
+        productTitle: "Canon EOS 200D II DSLR Camera",
+        artKey: "camera",
+        ownerName: "Karthik Varma (Cygnus Media)",
+        pickupSpot: "SAC Media Room",
+        startDate: "2026-11-02",
+        endDate: "2026-11-03",
+        days: 1,
+        dailyRate: 400,
+        total: 400,
+        deposit: 2000,
+        status: "Requested",
+        statusStep: 1,
+        renterName: "Rahul Varma (N210452)"
+      }
+    ];
+
+    const initialUserListings = [
+      {
+        id: "my-01",
+        title: "Logitech R400 Wireless Presentation Clicker with Laser",
+        category: "Events & Presentations",
+        dailyRate: 40,
+        weeklyRate: 200,
+        condition: "Like New",
+        deposit: 150,
+        artKey: "projector",
+        pickupSpot: "Hostel K3 Foyer",
+        status: "Active on Campus",
+        inquiries: 2
+      }
+    ];
+
+    /* ----------------------------------------------------------------------
+       C. APPLICATION STATE MANAGEMENT (With LocalStorage Fallback)
+       ---------------------------------------------------------------------- */
+    const State = {
+      products: [],
+      bookings: [],
+      userListings: [],
+      wishlist: new Set(),
+      theme: 'light',
+      browseFilters: {
+        category: 'All',
+        query: '',
+        budget: 'All',
+        condition: ['Like New', 'Excellent', 'Good'],
+        ownerType: 'All',
+        sort: 'featured'
+      },
+
+      init() {
+        // Safe localStorage loading
+        try {
+          const savedProducts = localStorage.getItem('cf_products');
+          this.products = savedProducts ? JSON.parse(savedProducts) : [...initialGearData];
+
+          const savedBookings = localStorage.getItem('cf_bookings');
+          this.bookings = savedBookings ? JSON.parse(savedBookings) : [...initialBookings];
+
+          const savedListings = localStorage.getItem('cf_listings');
+          this.userListings = savedListings ? JSON.parse(savedListings) : [...initialUserListings];
+
+          const savedWishlist = localStorage.getItem('cf_wishlist');
+          this.wishlist = savedWishlist ? new Set(JSON.parse(savedWishlist)) : new Set(['prod-01', 'prod-04']);
+
+          const savedTheme = localStorage.getItem('cf_theme');
+          if (savedTheme) this.theme = savedTheme;
+        } catch (e) {
+          console.warn('LocalStorage unavailable, using in-memory state.', e);
+          this.products = [...initialGearData];
+          this.bookings = [...initialBookings];
+          this.userListings = [...initialUserListings];
+          this.wishlist = new Set(['prod-01', 'prod-04']);
+        }
+
+        document.documentElement.setAttribute('data-theme', this.theme);
+      },
+
+      save() {
+        try {
+          localStorage.setItem('cf_products', JSON.stringify(this.products));
+          localStorage.setItem('cf_bookings', JSON.stringify(this.bookings));
+          localStorage.setItem('cf_listings', JSON.stringify(this.userListings));
+          localStorage.setItem('cf_wishlist', JSON.stringify([...this.wishlist]));
+          localStorage.setItem('cf_theme', this.theme);
+        } catch (e) {
+          // Graceful fallback
+        }
+      }
+    };
+
+    /* ----------------------------------------------------------------------
+       D. TOAST NOTIFICATIONS
+       ---------------------------------------------------------------------- */
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.innerHTML = `
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--c-lime); flex-shrink: 0;">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span>${message}</span>
+      `;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        toast.style.transition = 'all 300ms ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3800);
+    }
+
+    /* ----------------------------------------------------------------------
+       E. CLIENT-SIDE ROUTER (Hash-Based SPA)
+       ---------------------------------------------------------------------- */
+    const Router = {
+      routes: {
+        '': 'home',
+        'home': 'home',
+        'browse': 'browse',
+        'product': 'detail',
+        'list-item': 'list-item',
+        'dashboard': 'dashboard',
+        'profile': 'profile'
+      },
+
+      init() {
+        window.addEventListener('hashchange', () => this.handleRoute());
+        this.handleRoute();
+      },
+
+      handleRoute() {
+        const hash = window.location.hash.slice(1).trim();
+        const parts = hash.split('/');
+        const rootRoute = parts[0] || 'home';
+
+        // Close any open mobile drawer or backdrops
+        document.querySelectorAll('.modal-backdrop').forEach(m => m.classList.remove('is-open'));
+
+        // Update active nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.classList.toggle('is-active', link.dataset.route === rootRoute);
+        });
+
+        // Hide all views
+        document.querySelectorAll('.app-view').forEach(v => v.classList.remove('is-active'));
+
+        if (rootRoute === 'home') {
+          document.getElementById('view-home').classList.add('is-active');
+          renderHomeFeatured();
+        } else if (rootRoute === 'browse') {
+          document.getElementById('view-browse').classList.add('is-active');
+          renderBrowseView();
+        } else if (rootRoute === 'product' && parts[1]) {
+          document.getElementById('view-detail').classList.add('is-active');
+          renderProductDetailView(parts[1]);
+        } else if (rootRoute === 'list-item') {
+          document.getElementById('view-list-item').classList.add('is-active');
+          initListingFormLivePreview();
+        } else if (rootRoute === 'dashboard') {
+          document.getElementById('view-dashboard').classList.add('is-active');
+          renderDashboard();
+        } else if (rootRoute === 'profile') {
+          document.getElementById('view-profile').classList.add('is-active');
+        } else {
+          document.getElementById('view-404').classList.add('is-active');
+        }
+
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    };
+
+    /* ----------------------------------------------------------------------
+       F. PRODUCT CARD BUILDER
+       ---------------------------------------------------------------------- */
+    function buildProductCardHTML(item) {
+      const isSaved = State.wishlist.has(item.id);
+      const artSVG = (ProductArt[item.artKey] || ProductArt.calculator)();
+
+      return `
+        <article class="product-card" data-id="${item.id}">
+          <div class="product-card-media" onclick="window.location.hash='#product/${item.id}'" style="cursor: pointer;">
+            ${artSVG}
+            <span class="card-category-pill">${item.category}</span>
+            <span class="card-condition-pill">${item.condition}</span>
+            <button class="card-wishlist-btn ${isSaved ? 'is-active' : ''}" data-wishlist="${item.id}" title="${isSaved ? 'Remove from Saved' : 'Save Gear'}" aria-label="Save ${item.title}">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="${isSaved ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2">
+                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="product-card-body">
+            <div class="product-pickup-line">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>${item.owner.pickupSpot}</span>
+            </div>
+
+            <h3 class="product-card-title">
+              <a href="#product/${item.id}">${item.title}</a>
+            </h3>
+
+            <div class="product-owner-row">
+              <span>${item.owner.name}</span>
+              <span class="owner-type-chip">${item.owner.dept || item.ownerType}</span>
+            </div>
+
+            <p class="product-desc-line">${item.description}</p>
+
+            <div class="product-card-footer">
+              <div class="price-group">
+                <span class="price-bold">₹${item.dailyRate}</span>
+                <span class="price-unit">/day</span>
+              </div>
+              <div style="display: flex; gap: 0.35rem;">
+                <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.78rem;" onclick="openQuickView('${item.id}')">
+                  Quick View
+                </button>
+                <a href="#product/${item.id}" class="btn btn-primary" style="padding: 0.4rem 0.9rem; font-size: 0.78rem;">
+                  Rent
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    /* ----------------------------------------------------------------------
+       G. VIEW RENDERERS
+       ---------------------------------------------------------------------- */
+    // 1. Home View
+    function renderHomeFeatured() {
+      const container = document.getElementById('home-featured-grid');
+      if (!container) return;
+
+      const featured = State.products.slice(0, 4);
+      container.innerHTML = featured.map(buildProductCardHTML).join('');
+      bindWishlistButtons(container);
+
+      // Render mini portraits in hero shoot
+      document.getElementById('art-hero-calc').innerHTML = ProductArt.calculator();
+      document.getElementById('art-hero-cam').innerHTML = ProductArt.camera();
+      document.getElementById('art-hero-laptop').innerHTML = ProductArt.laptop();
+      document.getElementById('art-hero-arduino').innerHTML = ProductArt.arduino();
+    }
+
+    // 2. Browse View
+    const categoriesList = [
+      "All",
+      "Academic Equipment",
+      "Electronics",
+      "Photography & Content",
+      "Electronics Projects",
+      "Accessories",
+      "Events & Presentations"
+    ];
+
+    function renderBrowseView() {
+      // Render Category Filter Chips
+      const chipsContainer = document.getElementById('browse-category-chips');
+      if (chipsContainer) {
+        chipsContainer.innerHTML = categoriesList.map(cat => {
+          const isActive = cat === State.browseFilters.category;
+          const count = cat === "All" 
+            ? State.products.length 
+            : State.products.filter(p => p.category === cat).length;
+          return `
+            <button class="cat-chip ${isActive ? 'is-active' : ''}" data-cat="${cat}">
+              <span>${cat}</span>
+              <span style="font-size: 0.75rem; opacity: 0.75;">(${count})</span>
+            </button>
+          `;
+        }).join('');
+
+        chipsContainer.querySelectorAll('[data-cat]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            State.browseFilters.category = btn.dataset.cat;
+            renderBrowseView();
+          });
+        });
+      }
+
+      filterAndRenderBrowseGrid();
+    }
+
+    function filterAndRenderBrowseGrid() {
+      const grid = document.getElementById('browse-products-grid');
+      const countLabel = document.getElementById('browse-results-count');
+      if (!grid) return;
+
+      let filtered = State.products.filter(item => {
+        // Category
+        if (State.browseFilters.category !== "All" && item.category !== State.browseFilters.category) {
+          return false;
+        }
+        // Budget
+        if (State.browseFilters.budget !== "All" && item.dailyRate > Number(State.browseFilters.budget)) {
+          return false;
+        }
+        // Condition
+        if (!State.browseFilters.condition.includes(item.condition)) {
+          return false;
+        }
+        // Owner Type
+        if (State.browseFilters.ownerType !== "All") {
+          if (State.browseFilters.ownerType === "Student" && item.ownerType !== "Student") return false;
+          if (State.browseFilters.ownerType === "Shop" && item.ownerType !== "Shop") return false;
+        }
+        // Search query
+        if (State.browseFilters.query) {
+          const q = State.browseFilters.query.toLowerCase();
+          const matchTitle = item.title.toLowerCase().includes(q);
+          const matchDesc = item.description.toLowerCase().includes(q);
+          const matchOwner = item.owner.name.toLowerCase().includes(q);
+          if (!matchTitle && !matchDesc && !matchOwner) return false;
+        }
+        return true;
+      });
+
+      // Sorting
+      if (State.browseFilters.sort === 'price-low') {
+        filtered.sort((a, b) => a.dailyRate - b.dailyRate);
+      } else if (State.browseFilters.sort === 'price-high') {
+        filtered.sort((a, b) => b.dailyRate - a.dailyRate);
+      } else {
+        filtered.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
+      }
+
+      if (countLabel) {
+        countLabel.textContent = `${filtered.length} equipment item${filtered.length === 1 ? '' : 's'} available`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="empty-state-box">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin: 0 auto 1rem; color: var(--c-charcoal-muted);">
+              <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+            </svg>
+            <h3 style="font-size: 1.25rem; color: var(--c-forest); margin-bottom: 0.4rem;">No gear found matching your filters</h3>
+            <p class="text-sm" style="color: var(--c-charcoal-muted); max-width: 440px; margin: 0 auto 1.5rem;">
+              Midsem cram session or project deadline? Try resetting filters or search for another item.
+            </p>
+            <button class="btn btn-primary" onclick="resetAllBrowseFilters()">Reset Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(buildProductCardHTML).join('');
+      bindWishlistButtons(grid);
+    }
+
+    function resetAllBrowseFilters() {
+      State.browseFilters = {
+        category: 'All',
+        query: '',
+        budget: 'All',
+        condition: ['Like New', 'Excellent', 'Good'],
+        ownerType: 'All',
+        sort: 'featured'
+      };
+      const searchInput = document.getElementById('browse-search-input');
+      if (searchInput) searchInput.value = '';
+      const sortSelect = document.getElementById('browse-sort-select');
+      if (sortSelect) sortSelect.value = 'featured';
+      document.querySelectorAll('input[name="filter-budget"][value="All"]').forEach(r => r.checked = true);
+      document.querySelectorAll('input[name="filter-owner"][value="All"]').forEach(r => r.checked = true);
+      document.querySelectorAll('.condition-checkbox').forEach(c => c.checked = true);
+      renderBrowseView();
+    }
+
+    // 3. Product Detail View & Interactive Price Calculator
+    function renderProductDetailView(productId) {
+      const container = document.getElementById('detail-view-container');
+      if (!container) return;
+
+      const product = State.products.find(p => p.id === productId);
+      if (!product) {
+        container.innerHTML = `
+          <div class="empty-state-box">
+            <h3>Equipment Not Found</h3>
+            <p>This item may have been returned or unlisted by the owner.</p>
+            <a href="#browse" class="btn btn-primary" style="margin-top: 1rem;">Back to Marketplace</a>
+          </div>
+        `;
+        return;
+      }
+
+      const today = new Date().toISOString().split('T')[0];
+      const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+      const artSVG = (ProductArt[product.artKey] || ProductArt.calculator)();
+
+      container.innerHTML = `
+        <div class="detail-view-grid">
+          <!-- Left: Illustrated Product Portrait Gallery Box -->
+          <div class="detail-gallery-box">
+            ${artSVG}
+          </div>
+
+          <!-- Right: Details & Booking Calculator -->
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.5rem; flex-wrap: wrap;">
+              <span class="badge-editorial">${product.category}</span>
+              <span class="badge-demo">${product.condition}</span>
+              <span style="font-size: 0.8rem; color: var(--c-charcoal-muted);">${product.availability}</span>
+            </div>
+
+            <h1 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-bottom: 0.5rem; color: var(--c-forest);">${product.title}</h1>
+            
+            <div style="display: flex; align-items: baseline; gap: 4px; margin-bottom: 1.25rem;">
+              <span class="price-bold" style="font-size: 2rem;">₹${product.dailyRate}</span>
+              <span class="price-unit">/day</span>
+              ${product.weeklyRate ? `<span style="font-size: 0.85rem; color: var(--c-forest-soft); font-weight: 700; margin-left: 0.85rem;">(or ₹${product.weeklyRate}/week)</span>` : ''}
+            </div>
+
+            <p class="text-body" style="color: var(--c-charcoal); margin-bottom: 1.5rem;">${product.description}</p>
+
+            <!-- Owner Card -->
+            <div style="background: var(--c-ivory-warm); border: 1px solid var(--c-border); border-radius: var(--r-md); padding: 1.25rem; margin-bottom: 1.75rem;">
+              <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--c-charcoal-muted); margin-bottom: 0.35rem;">Gear Provider (RGUKT Community)</div>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <h4 style="font-size: 1.05rem; color: var(--c-forest);">${product.owner.name}</h4>
+                  <p class="text-sm" style="color: var(--c-charcoal-muted);">${product.owner.dept || product.ownerType} • ${product.owner.rating}</p>
+                </div>
+                <span class="badge-editorial" style="background: var(--c-sage-light); color: var(--c-forest); font-size: 0.7rem;">Handover at ${product.owner.pickupSpot}</span>
+              </div>
+            </div>
+
+            <!-- Included Accessories -->
+            <h3 style="font-size: 1.05rem; margin-bottom: 0.65rem;">Included Gear &amp; Accessories</h3>
+            <ul style="display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.75rem; font-size: 0.875rem;">
+              ${product.includedAccessories.map(acc => `
+                <li style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="color: var(--c-lime-dark); font-weight: 800;">✓</span>
+                  <span>${acc}</span>
+                </li>
+              `).join('')}
+            </ul>
+
+            <!-- Interactive Booking Calculator Panel -->
+            <div class="calculator-panel">
+              <h3 style="font-size: 1.2rem; color: var(--c-forest); margin-bottom: 0.35rem;">Request Campus Rental</h3>
+              <p class="text-xs" style="color: var(--c-charcoal-muted); margin-bottom: 1.25rem;">Select your dates. Pay directly to peer upon handover.</p>
+
+              <form id="calc-booking-form">
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="calc-start">Rental Start Date</label>
+                    <input type="date" id="calc-start" required class="form-control" min="${today}" value="${today}" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="calc-end">Return Date</label>
+                    <input type="date" id="calc-end" required class="form-control" min="${today}" value="${tomorrow}" />
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="calc-name">Your Full Name</label>
+                    <input type="text" id="calc-name" required class="form-control" placeholder="e.g. Rahul Varma" value="Rahul Varma" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="calc-roll">RGUKT Roll Number</label>
+                    <input type="text" id="calc-roll" required class="form-control" placeholder="e.g. N210452" value="N210452" />
+                  </div>
+                </div>
+
+                <!-- Price Breakdown Box -->
+                <div class="price-breakdown-table">
+                  <div class="breakdown-row">
+                    <span id="calc-days-label">1 Day @ ₹${product.dailyRate}/day</span>
+                    <strong id="calc-subtotal">₹${product.dailyRate}</strong>
+                  </div>
+                  <div class="breakdown-row">
+                    <span>Refundable Security Deposit (Handover refund)</span>
+                    <span>₹${product.deposit}</span>
+                  </div>
+                  <div class="breakdown-row total-row">
+                    <span>Total Handover Amount</span>
+                    <span id="calc-total">₹${product.dailyRate + product.deposit}</span>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-lime" style="width: 100%; height: 48px;">
+                  <span>Submit Rental Booking Request</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+                </button>
+              </form>
+
+              <div class="text-xs" style="color: var(--c-charcoal-muted); margin-top: 0.85rem; text-align: center;">
+                * Handover terms: ${product.terms}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Attach Live Date Calculation Handlers
+      const startInput = container.querySelector('#calc-start');
+      const endInput = container.querySelector('#calc-end');
+      const daysLabel = container.querySelector('#calc-days-label');
+      const subtotalEl = container.querySelector('#calc-subtotal');
+      const totalEl = container.querySelector('#calc-total');
+
+      function updateCalc() {
+        const start = new Date(startInput.value);
+        const end = new Date(endInput.value);
+        let diffDays = Math.round((end - start) / (1000 * 60 * 60 * 24));
+        if (isNaN(diffDays) || diffDays <= 0) diffDays = 1;
+
+        let subtotal = 0;
+        if (product.weeklyRate && diffDays >= 7) {
+          const weeks = Math.floor(diffDays / 7);
+          const extraDays = diffDays % 7;
+          subtotal = (weeks * product.weeklyRate) + (extraDays * product.dailyRate);
+          daysLabel.textContent = `${diffDays} days (${weeks} wk + ${extraDays}d discount)`;
+        } else {
+          subtotal = diffDays * product.dailyRate;
+          daysLabel.textContent = `${diffDays} day${diffDays > 1 ? 's' : ''} @ ₹${product.dailyRate}/day`;
+        }
+
+        subtotalEl.textContent = `₹${subtotal}`;
+        totalEl.textContent = `₹${subtotal + product.deposit}`;
+        return { diffDays, subtotal, total: subtotal + product.deposit };
+      }
+
+      startInput.addEventListener('change', () => {
+        if (endInput.value < startInput.value) {
+          endInput.value = startInput.value;
+        }
+        endInput.min = startInput.value;
+        updateCalc();
+      });
+      endInput.addEventListener('change', updateCalc);
+
+      // Handle Booking Submission
+      const form = container.querySelector('#calc-booking-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const { diffDays, subtotal } = updateCalc();
+        const renterName = container.querySelector('#calc-name').value.trim();
+        const renterRoll = container.querySelector('#calc-roll').value.trim();
+
+        const newBooking = {
+          id: "b-" + Date.now(),
+          productId: product.id,
+          productTitle: product.title,
+          artKey: product.artKey,
+          ownerName: product.owner.name,
+          pickupSpot: product.owner.pickupSpot,
+          startDate: startInput.value,
+          endDate: endInput.value,
+          days: diffDays,
+          dailyRate: product.dailyRate,
+          total: subtotal,
+          deposit: product.deposit,
+          status: "Requested",
+          statusStep: 1,
+          renterName: `${renterName} (${renterRoll})`
+        };
+
+        State.bookings.unshift(newBooking);
+        State.save();
+        updateWishlistAndBadgeUI();
+
+        // Open Confirmation Modal
+        const confirmModal = document.getElementById('booking-confirm-modal');
+        const confirmDetails = document.getElementById('confirm-modal-details');
+        if (confirmModal && confirmDetails) {
+          confirmDetails.innerHTML = `
+            <div style="font-size: 0.85rem; margin-bottom: 0.35rem;">Item: <strong>${product.title}</strong></div>
+            <div style="font-size: 0.85rem; margin-bottom: 0.35rem;">Owner: <strong>${product.owner.name}</strong></div>
+            <div style="font-size: 0.85rem; margin-bottom: 0.35rem;">Dates: <strong>${startInput.value} to ${endInput.value} (${diffDays} days)</strong></div>
+            <div style="font-size: 0.85rem; margin-bottom: 0.35rem;">Handover Spot: <strong>${product.owner.pickupSpot}</strong></div>
+            <div style="font-size: 0.85rem; padding-top: 0.5rem; border-top: 1px dashed var(--c-border); color: var(--c-forest); font-weight: 700;">
+              Total: ₹${subtotal} (+ ₹${product.deposit} refundable deposit)
+            </div>
+          `;
+          confirmModal.classList.add('is-open');
+        }
+
+        showToast(`Booking request sent to ${product.owner.name}! Track in Dashboard.`);
+      });
+    }
+
+    // 4. "List an Item" Multi-Step View & Live Preview
+    function initListingFormLivePreview() {
+      const titleInput = document.getElementById('list-input-title');
+      const catSelect = document.getElementById('list-input-cat');
+      const dailyInput = document.getElementById('list-input-daily');
+      const ownerInput = document.getElementById('list-input-owner');
+      const deptInput = document.getElementById('list-input-dept');
+      const spotInput = document.getElementById('list-input-spot');
+
+      function updatePreview() {
+        document.getElementById('live-prev-title').textContent = titleInput.value.trim() || "Equipment Title";
+        document.getElementById('live-prev-price').textContent = dailyInput.value ? `₹${dailyInput.value}` : "₹30";
+        document.getElementById('live-prev-owner').textContent = ownerInput.value.trim() || "Your Name";
+        document.getElementById('live-prev-dept').textContent = deptInput.value.trim() || "Student";
+        document.getElementById('live-prev-spot').innerHTML = `
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>${spotInput.value.trim() || "SAC / Central Library"}</span>
+        `;
+
+        // Pick art based on category
+        let artKey = "calculator";
+        const cat = catSelect.value;
+        if (cat === "Electronics") artKey = "laptop";
+        else if (cat === "Photography & Content") artKey = "camera";
+        else if (cat === "Electronics Projects") artKey = "arduino";
+        else if (cat === "Events & Presentations") artKey = "projector";
+        else if (cat === "Accessories") artKey = "powerbank";
+
+        document.getElementById('live-preview-art').innerHTML = (ProductArt[artKey] || ProductArt.calculator)();
+      }
+
+      [titleInput, catSelect, dailyInput, ownerInput, deptInput, spotInput].forEach(el => {
+        if (el) el.addEventListener('input', updatePreview);
+      });
+      updatePreview();
+
+      // Multi-Step Navigation
+      const pane1 = document.getElementById('step-pane-1');
+      const pane2 = document.getElementById('step-pane-2');
+      const pane3 = document.getElementById('step-pane-3');
+      const dot1 = document.getElementById('dot-1');
+      const dot2 = document.getElementById('dot-2');
+      const dot3 = document.getElementById('dot-3');
+
+      document.getElementById('btn-next-step-1')?.addEventListener('click', () => {
+        if (!titleInput.value.trim()) {
+          showToast('Please enter an equipment title', 'error');
+          titleInput.focus();
+          return;
+        }
+        pane1.style.display = 'none';
+        pane2.style.display = 'block';
+        dot2.classList.add('is-active');
+      });
+
+      document.getElementById('btn-prev-step-2')?.addEventListener('click', () => {
+        pane2.style.display = 'none';
+        pane1.style.display = 'block';
+        dot2.classList.remove('is-active');
+      });
+
+      document.getElementById('btn-next-step-2')?.addEventListener('click', () => {
+        if (!dailyInput.value || Number(dailyInput.value) <= 0) {
+          showToast('Please enter a daily rental rate', 'error');
+          dailyInput.focus();
+          return;
+        }
+        pane2.style.display = 'none';
+        pane3.style.display = 'block';
+        dot3.classList.add('is-active');
+      });
+
+      document.getElementById('btn-prev-step-3')?.addEventListener('click', () => {
+        pane3.style.display = 'none';
+        pane2.style.display = 'block';
+        dot3.classList.remove('is-active');
+      });
+
+      // Final Submission
+      const form = document.getElementById('listing-multistep-form');
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        const title = titleInput.value.trim();
+        const category = catSelect.value;
+        const dailyRate = Number(dailyInput.value);
+        const weeklyRate = Number(document.getElementById('list-input-weekly').value) || (dailyRate * 5);
+        const deposit = Number(document.getElementById('list-input-deposit').value) || (dailyRate * 4);
+        const condition = document.getElementById('list-input-cond').value;
+        const desc = document.getElementById('list-input-desc').value.trim();
+        const ownerName = ownerInput.value.trim();
+        const dept = deptInput.value.trim();
+        const spot = spotInput.value.trim();
+        const accessories = document.getElementById('list-input-acc').value.trim();
+
+        let artKey = "calculator";
+        if (category === "Electronics") artKey = "laptop";
+        else if (category === "Photography & Content") artKey = "camera";
+        else if (category === "Electronics Projects") artKey = "arduino";
+        else if (category === "Events & Presentations") artKey = "projector";
+        else if (category === "Accessories") artKey = "powerbank";
+
+        const newItem = {
+          id: "prod-" + Date.now(),
+          title,
+          category,
+          dailyRate,
+          weeklyRate,
+          deposit,
+          condition,
+          availability: "Available Now",
+          ownerType: "Student",
+          owner: {
+            name: ownerName,
+            dept: dept,
+            pickupSpot: spot,
+            rating: "5.0 ★ (New)"
+          },
+          artKey,
+          description: desc,
+          includedAccessories: accessories ? accessories.split(',').map(s => s.trim()) : ["Item in full working order"],
+          featured: false,
+          terms: "Campus handover. Inspect together before exchange."
+        };
+
+        State.products.unshift(newItem);
+        State.userListings.unshift({
+          id: "my-" + Date.now(),
+          title: newItem.title,
+          category: newItem.category,
+          dailyRate: newItem.dailyRate,
+          weeklyRate: newItem.weeklyRate,
+          condition: newItem.condition,
+          deposit: newItem.deposit,
+          artKey: newItem.artKey,
+          pickupSpot: newItem.owner.pickupSpot,
+          status: "Active on Campus",
+          inquiries: 0
+        });
+
+        State.save();
+        showToast(`"${newItem.title}" published! It is now live in the marketplace.`);
+        form.reset();
+        window.location.hash = "#dashboard";
+      };
+    }
+
+    // 5. Dashboard View (Renter & Owner Status Progression)
+    function renderDashboard(activeTab = 'rentals') {
+      const container = document.getElementById('dash-tab-pane-content');
+      if (!container) return;
+
+      // Update active tab buttons
+      document.querySelectorAll('.dash-tab-btn').forEach(btn => {
+        btn.classList.toggle('is-active', btn.dataset.dashTab === activeTab);
+      });
+
+      if (activeTab === 'rentals') {
+        // Renter view: Submitted bookings
+        if (State.bookings.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state-box">
+              <h3>No Active Rentals</h3>
+              <p class="text-sm" style="color: var(--c-charcoal-muted); margin-bottom: 1.25rem;">You haven't requested any items yet.</p>
+              <a href="#browse" class="btn btn-primary">Browse Campus Gear</a>
+            </div>
+          `;
+          return;
+        }
+
+        container.innerHTML = `
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            ${State.bookings.map(b => {
+              const art = (ProductArt[b.artKey] || ProductArt.calculator)();
+              return `
+                <div class="rental-order-card">
+                  <div style="width: 70px; height: 70px; border-radius: var(--r-sm); background: var(--c-ivory-warm); padding: 6px; flex-shrink: 0;">
+                    ${art}
+                  </div>
+                  <div style="flex-grow: 1; min-width: 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem; gap: 0.5rem; flex-wrap: wrap;">
+                      <h4 style="font-size: 1.05rem; color: var(--c-forest);">${b.productTitle}</h4>
+                      <span class="order-status-pill status-${b.status.toLowerCase().replace(/\s+/g, '-')}">${b.status}</span>
+                    </div>
+                    <div class="text-xs" style="color: var(--c-charcoal-muted); margin-bottom: 0.25rem;">
+                      Owner: <strong>${b.ownerName}</strong> • Handover Spot: <strong>${b.pickupSpot}</strong>
+                    </div>
+                    <div style="font-size: 0.8125rem; color: var(--c-forest-soft); font-weight: 700;">
+                      Dates: ${b.startDate} to ${b.endDate} (${b.days} days) • Total Rent: ₹${b.total} (+ ₹${b.deposit} deposit)
+                    </div>
+
+                    <!-- Status progression stepper for renter -->
+                    <div style="margin-top: 0.85rem; display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                      ${b.statusStep === 2 ? `
+                        <button class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;" onclick="advanceBookingStatus('${b.id}', 3, 'Picked up')">
+                          Mark as Picked Up at Handover
+                        </button>
+                      ` : ''}
+                      ${b.statusStep === 3 ? `
+                        <button class="btn btn-lime" style="padding: 0.35rem 0.75rem; font-size: 0.75rem;" onclick="advanceBookingStatus('${b.id}', 4, 'Returned')">
+                          Confirm Returned to Owner
+                        </button>
+                      ` : ''}
+                      <span class="text-xs" style="color: var(--c-charcoal-muted);">Status flow: Requested &rarr; Approved &rarr; Picked Up &rarr; Returned</span>
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      } else if (activeTab === 'listings') {
+        // Owner view: Items listed by user
+        container.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+            <span class="text-sm" style="color: var(--c-charcoal-muted);">Gear you have listed on the RGUKT marketplace:</span>
+            <a href="#list-item" class="btn btn-lime" style="padding: 0.45rem 1rem; font-size: 0.8rem;">+ List Another Item</a>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            ${State.userListings.map(l => {
+              const art = (ProductArt[l.artKey] || ProductArt.calculator)();
+              return `
+                <div class="rental-order-card">
+                  <div style="width: 70px; height: 70px; border-radius: var(--r-sm); background: var(--c-ivory-warm); padding: 6px; flex-shrink: 0;">
+                    ${art}
+                  </div>
+                  <div style="flex-grow: 1;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                      <h4 style="font-size: 1.05rem; color: var(--c-forest);">${l.title}</h4>
+                      <span class="order-status-pill status-approved">${l.status}</span>
+                    </div>
+                    <div class="text-xs" style="color: var(--c-charcoal-muted);">
+                      Rate: ₹${l.dailyRate}/day • Condition: ${l.condition} • Pickup: ${l.pickupSpot}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      } else if (activeTab === 'inbox') {
+        // Owner view: Incoming booking requests with Approve/Reject actions
+        container.innerHTML = `
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div class="rental-order-card" style="border-left: 4px solid var(--c-lime-dark);" id="demo-inbox-card">
+              <div style="flex-grow: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                  <h4 style="font-size: 1.05rem; color: var(--c-forest);">Logitech Wireless Clicker (Booking Request)</h4>
+                  <span class="order-status-pill status-requested">Action Required</span>
+                </div>
+                <p class="text-sm" style="color: var(--c-charcoal); margin-bottom: 0.4rem;">
+                  From student: <strong>Manoj Kumar (N190822, E4 CSE)</strong> for Department Seminar Defense.
+                </p>
+                <div class="text-xs" style="color: var(--c-charcoal-muted); margin-bottom: 0.85rem;">
+                  Duration: 2 days (₹80 rent + ₹150 deposit) • Handover requested at SAC Ground Floor.
+                </div>
+                <div style="display: flex; gap: 0.65rem;" id="inbox-actions-row">
+                  <button class="btn btn-primary" style="padding: 0.45rem 1rem; font-size: 0.8rem;" onclick="handleOwnerAction('approve')">
+                    Approve &amp; Coordinate Handover
+                  </button>
+                  <button class="btn btn-secondary" style="padding: 0.45rem 1rem; font-size: 0.8rem;" onclick="handleOwnerAction('reject')">
+                    Decline
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // Owner approve/reject handler
+    window.handleOwnerAction = function(action) {
+      const row = document.getElementById('inbox-actions-row');
+      if (!row) return;
+
+      if (action === 'approve') {
+        row.innerHTML = `<span style="font-size: 0.85rem; color: var(--c-success); font-weight: 700;">✓ Request Approved! Meet Manoj at SAC Ground Floor.</span>`;
+        showToast('Approved! You agreed to meet Manoj at SAC.');
+      } else {
+        document.getElementById('demo-inbox-card')?.remove();
+        showToast('Request declined.');
+      }
+    };
+
+    // Renter advance status
+    window.advanceBookingStatus = function(bookingId, step, statusText) {
+      const b = State.bookings.find(item => item.id === bookingId);
+      if (b) {
+        b.statusStep = step;
+        b.status = statusText;
+        State.save();
+        renderDashboard('rentals');
+        showToast(`Rental status updated to "${statusText}"`);
+      }
+    };
+
+    /* ----------------------------------------------------------------------
+       H. WISHLIST & QUICK VIEW
+       ---------------------------------------------------------------------- */
+    function bindWishlistButtons(parent) {
+      parent.querySelectorAll('[data-wishlist]').forEach(btn => {
+        btn.onclick = (e) => {
+          e.stopPropagation();
+          const id = btn.dataset.wishlist;
+          const item = State.products.find(p => p.id === id);
+          if (!item) return;
+
+          if (State.wishlist.has(id)) {
+            State.wishlist.delete(id);
+            btn.classList.remove('is-active');
+            btn.querySelector('svg').setAttribute('fill', 'none');
+            showToast(`Removed "${item.title}" from saved gear`);
+          } else {
+            State.wishlist.add(id);
+            btn.classList.add('is-active');
+            btn.querySelector('svg').setAttribute('fill', 'currentColor');
+            showToast(`Saved "${item.title}" to wishlist`);
+          }
+
+          State.save();
+          updateWishlistAndBadgeUI();
+        };
+      });
+    }
+
+    function updateWishlistAndBadgeUI() {
+      const count = State.wishlist.size;
+      const badge = document.getElementById('wishlist-badge');
+      if (badge) badge.textContent = count;
+
+      // Populate wishlist drawer items
+      const drawer = document.getElementById('wishlist-drawer-items');
+      if (!drawer) return;
+
+      const saved = State.products.filter(p => State.wishlist.has(p.id));
+      if (saved.length === 0) {
+        drawer.innerHTML = `
+          <div style="text-align: center; padding: 2.5rem 1rem; color: var(--c-charcoal-muted);">
+            <p style="font-weight: 700; color: var(--c-forest); margin-bottom: 0.25rem;">Wishlist Empty</p>
+            <p class="text-xs">Click the heart icon on any gear card to save it for exams.</p>
+          </div>
+        `;
+        return;
+      }
+
+      drawer.innerHTML = saved.map(item => `
+        <div style="display: flex; gap: 0.75rem; padding: 0.65rem; background: var(--c-ivory-warm); border: 1px solid var(--c-border); border-radius: var(--r-md); align-items: center;">
+          <div style="width: 48px; height: 48px; flex-shrink: 0;">
+            ${(ProductArt[item.artKey] || ProductArt.calculator)()}
+          </div>
+          <div style="flex-grow: 1; min-width: 0;">
+            <div style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; color: var(--c-forest); text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+              ${item.title}
+            </div>
+            <div class="text-xs" style="color: var(--c-forest-soft); font-weight: 700;">₹${item.dailyRate}/day</div>
+          </div>
+          <a href="#product/${item.id}" class="btn btn-secondary" style="padding: 0.3rem 0.65rem; font-size: 0.72rem;" onclick="document.getElementById('wishlist-modal-backdrop').classList.remove('is-open');">
+            View
+          </a>
+        </div>
+      `).join('');
+    }
+
+    // Quick View Modal
+    window.openQuickView = function(productId) {
+      const product = State.products.find(p => p.id === productId);
+      if (!product) return;
+
+      const modal = document.getElementById('quick-view-modal');
+      const content = document.getElementById('quick-view-content');
+      if (!modal || !content) return;
+
+      content.innerHTML = `
+        <button class="modal-close-btn" onclick="document.getElementById('quick-view-modal').classList.remove('is-open')" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+          <div style="height: 240px; background: var(--c-ivory-warm); border-radius: var(--r-md); padding: 1.5rem; display: flex; align-items: center; justify-content: center;">
+            ${(ProductArt[product.artKey] || ProductArt.calculator)()}
+          </div>
+
+          <div>
+            <span class="badge-editorial" style="margin-bottom: 0.4rem;">${product.category}</span>
+            <h3 style="font-size: 1.35rem; color: var(--c-forest); margin-bottom: 0.4rem;">${product.title}</h3>
+            <div style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--c-forest); margin-bottom: 0.85rem;">
+              ₹${product.dailyRate}<span style="font-size: 0.8rem; font-weight: 500; color: var(--c-charcoal-muted);">/day</span>
+            </div>
+            <p class="text-sm" style="color: var(--c-charcoal-muted); margin-bottom: 1.25rem;">${product.description}</p>
+            <div class="text-xs" style="color: var(--c-forest-soft); font-weight: 600; margin-bottom: 1.25rem;">
+              Pickup: ${product.owner.pickupSpot}
+            </div>
+            <div style="display: flex; gap: 0.65rem;">
+              <a href="#product/${product.id}" class="btn btn-primary" onclick="document.getElementById('quick-view-modal').classList.remove('is-open')">
+                View Full Details &amp; Calculator &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      modal.classList.add('is-open');
+    };
+
+    /* ----------------------------------------------------------------------
+       I. EVENT LISTENERS & LIFECYCLE INIT
+       ---------------------------------------------------------------------- */
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Init state & router
+      State.init();
+      Router.init();
+      updateWishlistAndBadgeUI();
+
+      // 2. Sticky navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) navbar.classList.add('is-scrolled');
+        else navbar.classList.remove('is-scrolled');
+      }, { passive: true });
+
+      // 3. Theme Toggle (Light / Dark Forest)
+      const themeBtn = document.getElementById('theme-toggle-btn');
+      themeBtn?.addEventListener('click', () => {
+        State.theme = State.theme === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', State.theme);
+        State.save();
+        showToast(`Switched to ${State.theme === 'dark' ? 'Forest Dark' : 'Warm Ivory'} mode`);
+      });
+
+      // 4. Hero Search Form & Quick Tags
+      const heroForm = document.getElementById('hero-search-form');
+      heroForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        State.browseFilters.query = document.getElementById('hero-query').value.trim();
+        State.browseFilters.category = document.getElementById('hero-category').value;
+        State.browseFilters.budget = document.getElementById('hero-budget').value;
+        window.location.hash = '#browse';
+      });
+
+      document.querySelectorAll('.quick-tag-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          State.browseFilters.query = btn.dataset.searchTag;
+          window.location.hash = '#browse';
+        });
+      });
+
+      // 5. Hero Ambient Glow Follow
+      const heroSection = document.getElementById('hero-banner');
+      const heroGlow = document.getElementById('hero-glow');
+      if (heroSection && heroGlow) {
+        heroSection.addEventListener('mousemove', (e) => {
+          const rect = heroSection.getBoundingClientRect();
+          heroGlow.style.left = `${e.clientX - rect.left}px`;
+          heroGlow.style.top = `${e.clientY - rect.top}px`;
+        });
+      }
+
+      // 6. Browse Sidebar Event Bindings
+      document.getElementById('browse-search-input')?.addEventListener('input', (e) => {
+        State.browseFilters.query = e.target.value.trim();
+        filterAndRenderBrowseGrid();
+      });
+
+      document.getElementById('browse-sort-select')?.addEventListener('change', (e) => {
+        State.browseFilters.sort = e.target.value;
+        filterAndRenderBrowseGrid();
+      });
+
+      document.querySelectorAll('input[name="filter-budget"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          State.browseFilters.budget = e.target.value;
+          filterAndRenderBrowseGrid();
+        });
+      });
+
+      document.querySelectorAll('input[name="filter-owner"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          State.browseFilters.ownerType = e.target.value;
+          filterAndRenderBrowseGrid();
+        });
+      });
+
+      document.querySelectorAll('.condition-checkbox').forEach(cb => {
+        cb.addEventListener('change', () => {
+          const checked = Array.from(document.querySelectorAll('.condition-checkbox:checked')).map(c => c.value);
+          State.browseFilters.condition = checked;
+          filterAndRenderBrowseGrid();
+        });
+      });
+
+      document.getElementById('btn-reset-sidebar-filters')?.addEventListener('click', resetAllBrowseFilters);
+
+      // 7. Dashboard Tab Buttons
+      document.querySelectorAll('.dash-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          renderDashboard(btn.dataset.dashTab);
+        });
+      });
+
+      // 8. Wishlist Modal Triggers
+      document.getElementById('btn-open-wishlist')?.addEventListener('click', () => {
+        document.getElementById('wishlist-modal-backdrop')?.classList.add('is-open');
+      });
+      document.getElementById('btn-close-wishlist')?.addEventListener('click', () => {
+        document.getElementById('wishlist-modal-backdrop')?.classList.remove('is-open');
+      });
+
+      // 9. Mobile Menu
+      document.getElementById('mobile-menu-toggle')?.addEventListener('click', () => {
+        document.getElementById('mobile-nav-backdrop')?.classList.add('is-open');
+      });
+      document.getElementById('btn-close-mobile-nav')?.addEventListener('click', () => {
+        document.getElementById('mobile-nav-backdrop')?.classList.remove('is-open');
+      });
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('mobile-nav-backdrop')?.classList.remove('is-open');
+        });
+      });
+
+      // 10. Close Modals on ESC Key or Backdrop Click
+      document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+        backdrop.addEventListener('click', (e) => {
+          if (e.target === backdrop) backdrop.classList.remove('is-open');
+        });
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.modal-backdrop.is-open').forEach(m => m.classList.remove('is-open'));
+        }
+      });
+
+      console.log('CampusFind RGUKT Nuzvid Single-File SPA Ready.');
+    });
+  </script>
+</body>
+</html>

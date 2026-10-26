@@ -1,0 +1,141 @@
+/* ==========================================================================
+   Typography System — Manrope (Headings) + Inter (Body)
+   Editorial hierarchy, expressive displays, tight tracking
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--c-forest);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+}
+
+/* Expressive Hero Display */
+.display-hero {
+  font-size: clamp(2.8rem, 6vw + 0.5rem, 5.2rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  color: var(--c-forest);
+}
+
+.display-hero-serif-accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--c-forest-soft);
+}
+
+/* Section Headings */
+.heading-section {
+  font-size: clamp(2rem, 3.5vw + 0.2rem, 3.4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--c-forest);
+}
+
+.heading-subsection {
+  font-size: clamp(1.4rem, 2vw + 0.2rem, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.heading-card {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--c-forest);
+}
+
+/* Body Scales */
+.text-lead {
+  font-size: clamp(1.08rem, 1.2vw + 0.4rem, 1.3rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--c-charcoal-muted);
+}
+
+.text-body {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--c-charcoal);
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--c-charcoal-muted);
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+/* Editorial Badges & Kicker Tags */
+.badge-editorial {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-full);
+  background-color: var(--c-lime);
+  color: var(--c-forest-dark);
+  box-shadow: 0 1px 4px rgba(18, 61, 50, 0.08);
+}
+
+.badge-editorial::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--c-forest-dark);
+}
+
+.badge-editorial-dark {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: var(--c-lime);
+  border: 1px solid rgba(215, 243, 107, 0.3);
+}
+
+.badge-editorial-dark::before {
+  background-color: var(--c-lime);
+}
+
+.kicker {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-forest-soft);
+  margin-bottom: 0.6rem;
+}
+
+/* Price Display */
+.price-display {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--c-forest);
+}
+
+.price-period {
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--c-charcoal-muted);
+  letter-spacing: normal;
+}
